@@ -15,5 +15,5 @@
 
 ### Requirements
 
-[Requirement specification(Word)](docs/requirement.docx)
+[Requirement specification(PDF)](docs/requirement.pdf)
 
