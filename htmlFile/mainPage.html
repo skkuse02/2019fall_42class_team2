@@ -46,16 +46,19 @@
       float: right;
       color: #ffffff;
     }
+    .row{
+      margin-top: 30px;
+    }
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
   </style>
-
 </head>
-
 <body>
-
-  <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">대공구 사이트에 오신 걸 환영합니다~</a>
+      <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -81,19 +84,9 @@
   <div class="container">
 
     <div class="row">
-      <!--
       <div class="col-lg-3">
-
-        <h1 class="my-4">대공구</h1>
-        <div class="list-group">
-          <a href="#" class="list-group-item">Category 1</a>
-          <a href="#" class="list-group-item">Category 2</a>
-          <a href="#" class="list-group-item">Category 3</a>
-        </div>
-
+        <h1 class="my-4">메인 창</h1>
       </div>
-      <!-- /.col-lg-3 -->
-
       <div class="col-lg-9">
 
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
@@ -122,6 +115,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+        <hr>
         <h4>검색</h4>
         <center>
           <div class="search">
@@ -129,6 +123,7 @@
             <button type="submit" class="sch_smit" onclick="location.href='search.html'">검색</button>
           </div>
         </center>
+        <hr>
         <h4>상품 목록</h4>
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
@@ -155,7 +150,6 @@
               </div>
             </div>
           </div>
-
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -168,10 +162,9 @@
               </div>
             </div>
           </div>
-
-
         </div>
         <!-- /.row -->
+        <hr>
         <div class="bulletin">
           <h4>공동 구매 현황</h4>
           <table class="table">

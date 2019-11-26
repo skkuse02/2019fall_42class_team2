@@ -10,7 +10,6 @@
 
   <title>대공구</title>
 
-
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-homepage.css" rel="stylesheet">
   <style>
@@ -18,8 +17,6 @@
       margin-top: 30px;
       width: 100%;
     }
-
-
     .search {
       border: 1px solid gray;
       height: 40px;
@@ -28,7 +25,6 @@
       margin: 10px;
       background-color: #ffffff;
     }
-
     .input_text {
       font-size: 16px;
       width: 325px;
@@ -37,7 +33,6 @@
       outline: none;
       float: left;
     }
-
     .sch_smit {
       width: 50px;
       height: 100%;
@@ -47,7 +42,6 @@
       float: right;
       color: #ffffff;
     }
-
     .btn1 {
       color: white;
       background-color: gray;
@@ -60,14 +54,18 @@
       text-decoration: none;
       color: black;
     }
-
     .my_info {
       margin: 10px;
     }
-
     .col-lg-9 {
       margin-top: 30px;
-
+    }
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
+    .row{
+      margin: 30px;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -81,15 +79,12 @@
       });
     });
   </script>
-
 </head>
-
 <body>
-
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">대공구 사이트에 오신 걸 환영합니다~</a>
+      <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -107,19 +102,17 @@
       </div>
     </div>
   </nav>
-
   <!-- Page Content -->
   <div class="container">
     <div class="row">
       <div class="col-lg-3">
-        <h1 class="my-4">대공구</h1>
+        <h1 class="my-4">판매자 창</h1>
         <div class="list-group">
           <button class="list-group-item btn1">개인 정보</button>
           <a href="product_management.html" class="list-group-item btn2">상품 관리</a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
-
       <div class="col-lg-9" width=100%>
         <h4>개인 정보</h4>
         <table class="table my_info">
@@ -147,21 +140,15 @@
               <th>할인율</th>
             </thead>
             <tbody>
-
             </tbody>
           </table>
-
         </div>
-
       </div>
       <!-- /.col-lg-9 -->
-
     </div>
     <!-- /.row -->
-
   </div>
   <!-- /.container -->
-
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
@@ -169,7 +156,6 @@
     </div>
     <!-- /.container -->
   </footer>
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

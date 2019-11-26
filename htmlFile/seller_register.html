@@ -1,45 +1,113 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/shop-homepage.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <div class="navbar-brand">대공구 사이트에 오신 걸 환영합니다~</div>
-      </div>
-    </nav>
 
-    <div class="container">
-      <h1>회원가입</h1>
-      <table class="table">
-        <tr>
-          <td>이름</td>
-          <td><input type="text"></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>회사 이름</td>
-          <td><input type="text"></td>
-        </tr>
-      </table>
-      <center>
-        <button type="button" name="button" onclick="location.href='login_seller.html'">회원 가입</button>
-      </center>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/shop-homepage.css" rel="stylesheet">
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .bgimg {
+      border: 0;
+      padding: 0;
+      background-image: url('start_background.jpg');
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .bg_cover {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    #box {
+      border: 2px solid;
+      padding: 10px;
+      background-color: white;
+      position: absolute;
+      width: 600px;
+      height: 450px;
+      left: 50%;
+      top: 50%;
+      margin-left: -300px;
+      margin-top: -225px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: #ccc;
+    }
+
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bgimg">
+    <div class="bg_cover">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <div class="navbar-brand"> <img src="logofile.png" alt="">
+          </div>
+      </nav>
+      <div id="box">
+        <h1>회원가입</h1>
+        <table class="table">
+          <tr>
+            <td>이름</td>
+            <td><input type="text"></td>
+          </tr>
+          <tr>
+            <td>아이디</td>
+            <td><input type="text" name="" value=""><button type="button" name="button">아이디 인증</button></td>
+          </tr>
+          <tr>
+            <td>회사 이름</td>
+            <td><input type="text" name="" value=""></td>
+          </tr>
+          <tr>
+            <td>비밀번호</td>
+            <td><input type="password" name="" value="">
+          </tr>
+          <tr>
+            <td>비밀번호 확인</td>
+            <td><input type="password" name="" value="">
+          </tr>
+        </table>
+        <center>
+          <button type="button" name="button" class="btn btn-primary btn-lg" onclick="location.href='login_seller.html'">회원 가입</button>
+          <button type="button" name="button" class="btn btn-primary btn-lg" onclick="location.href='start.html'">처음으로</button>
+        </center>
+      </div>
     </div>
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-      </div>
+  </div>
 
-      <!-- /.container -->
-    </footer>
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

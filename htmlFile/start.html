@@ -7,50 +7,85 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/shop-homepage.css" rel="stylesheet">
   <style>
-    .bulletin {
-      width: 100%;
-    }
-
-
-    .search {
-      border: 1px solid gray;
-      height: 40px;
-      width: 400px;
-      padding: 5px;
-      margin: 10px;
-      background-color: #ffffff;
-    }
-
-    .input_text {
-      font-size: 16px;
-      width: 325px;
-      padding-left: 10px;
-      border: 0px;
-      outline: none;
-      float: left;
-    }
-
-    .sch_smit {
-      width: 50px;
+    body,
+    html {
+      margin: 0;
+      padding: 0;
       height: 100%;
-      border: 0px;
-      background: gray;
-      outline: none;
-      float: right;
-      color: #ffffff;
+    }
+    .bgimg {
+      border: 0;
+      padding: 0;
+      background-image: url('start_background.jpg');
+      min-height: 100%;
+      background-position: center;
+      background-size: cover;
+    }
+    .bg_cover {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
+    #box {
+      position: absolute;
+      display: table;
+      width: 800px;
+      height: 300px;
+      left: 50%;
+      top: 50%;
+      margin-left: -400px;
+      margin-top: -150px;
+    }
+    .welcome_message {
+      display: table-cell;
+      width: 800px;
+      height: 300px;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .welcome_message p {
+      font-size: 40px;
+      color: white;
+      font-weight: bold;
+    }
+    .welcome_message h4 {
+      color: white;
+    }
+    .bg_cover {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
   </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container"><a class="navbar-brand" href="#">대공구 사이트에 오신 걸 환영합니다~</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
+  <div class="bgimg">
+    <div class="bg_cover">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
+        </div>
+      </nav>
+      <div id="box">
+        <div class="welcome_message">
+          <p> 대학생을 위한 공동구매, 대공구</p>
+          <h4>당신의 신분을 선택해주세요</h4>
+          <button type="button" class="btn btn-primary btn-lg" onclick="location.href='login_customer.html'">구매자</button>
+          <button type="button" class="btn btn-primary btn-lg" onclick="location.href='login_seller.html'">판매자</button>
+        </div>
+      </div>
     </div>
-  </nav>
-  <center>
-    <h4>당신의 신분을 선택하세요</h2><button type="button" onclick="location.href='login_customer.html'">구매자</button><button type="button" onclick="location.href='login_seller.html'">판매자</button>
-  </center>
+  </div>
   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
@@ -59,6 +94,7 @@
   </footer>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

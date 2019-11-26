@@ -18,7 +18,9 @@
       margin-top: 30px;
       width: 100%;
     }
-
+    .row{
+      margin: 30px;
+    }
 
     .search {
       border: 1px solid gray;
@@ -61,13 +63,20 @@
     .col-lg-9 {
       margin-top: 30px;
     }
-    .btn2{
+
+    .btn2 {
       color: black;
       text-align: center;
     }
-    .btn2:hover{
+
+    .btn2:hover {
       text-decoration: none;
       color: black;
+    }
+
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -89,7 +98,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">대공구 사이트에 오신 걸 환영합니다~</a>
+      <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -99,7 +108,7 @@
             <a class="nav-link" href="mainPage.html">Home</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">My Page
+            <a class="nav-link" href="consumer_page.html">My Page
               <span class="sr-only">(current)</span>
             </a>
           </li>
