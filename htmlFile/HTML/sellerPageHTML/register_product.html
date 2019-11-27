@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="product_register_window">
+    <h1>상품 등록</h1>
+    <table class="table">
+      <tr>
+        <th>상품 이름</th>
+        <th> <input type="text" name="product_name" value=""> </th>
+      </tr>
+      <tr>
+        <th>상품 이미지</th>
+        <th>
+          <form method="post" enctype="multipart/form-data" action="upload.php">
+            <input type="file" name="pic" />
+            <input type="submit" value="Upload" />
+          </form>
+        </th>
+      </tr>
+      <tr>
+        <th>처음 가격</th>
+        <th> <input type="number" name="price" value="">원 </th>
+      </tr>
+      <tr>
+        <th> 판매 최소 개수(할인율 1) </th>
+        <th> <input type="number" name="discount1_num" value="">개 </th>
+      </tr>
+      <tr>
+        <th> 할인율 1 </th>
+        <th> <input type="number" name="discount1" value="">% </th>
+      </tr>
+      <tr>
+        <th> 할인율 2 도달 개수 </th>
+        <th> <input type="number" name="discount2_num" value="">개 </th>
+      </tr>
+      <tr>
+        <th> 할인율 2 </th>
+        <th> <input type="number" name="discount2" value="">% </th>
+      </tr>
+      <tr>
+        <th> 할인율 3 도달 개수 </th>
+        <th> <input type="number" name="discount3_num" value="">개 </th>
+      </tr>
+      <tr>
+        <th> 할인율 3 </th>
+        <th> <input type="number" name="discount3" value="">% </th>
+      </tr>
+    </table>
+    <button type="button" class="btn" onclick="self.close();">등록</button>
+    <button type="button" class="btn" onclick="self.close();">취소</button>
+  </div>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
