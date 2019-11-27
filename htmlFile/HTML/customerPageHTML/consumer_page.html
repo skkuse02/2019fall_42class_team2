@@ -11,14 +11,15 @@
   <title>대공구</title>
 
 
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
   <style>
     .bulletin {
       margin-top: 30px;
       width: 100%;
     }
-    .row{
+
+    .row {
       margin: 30px;
     }
 
@@ -89,6 +90,12 @@
         $(".btn2").css("background-color", "white");
       });
     });
+
+    function popupOpen() {
+      var popUrl = "point_charge.html"; //팝업창에 출력될 페이지 URL
+      var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
+      window.open(popUrl, "", popOption);
+    }
   </script>
 
 </head>
@@ -98,7 +105,9 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
+      <div class="navbar-brand"> <img src="../../img/logofile.png" alt=""> </div>
+      <!-- 학교 이름 삽입 -->
+      <div class="univ_name" style="color: white"> 성균관대학교 </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -113,7 +122,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="start.html">Log out</a>
+            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
           </li>
         </ul>
       </div>
@@ -127,7 +136,7 @@
         <h1 class="my-4">대공구</h1>
         <div class="list-group">
           <button class="list-group-item btn1">개인 정보</button>
-          <a href="point_charge.html" class="list-group-item btn2">포인트 충전</a>
+          <a href="javascript:popupOpen();" class="list-group-item btn2">포인트 충전</a>
         </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -162,6 +171,19 @@
 
             </tbody>
           </table>
+          <div class="row">
+            <div class="col">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <!-- /.col-lg-9 -->
@@ -179,8 +201,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

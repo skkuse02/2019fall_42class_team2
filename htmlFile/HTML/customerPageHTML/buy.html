@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title></title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
   <style>
     .bulletin {
       width: 100%;
@@ -49,6 +49,7 @@
       width: 300px;
       height: 200px;
     }
+
     .navbar-brand img {
       border: 5px solid gray;
       width: 100px;
@@ -59,7 +60,9 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <img src="logofile.png" alt="">
+      <div class="navbar-brand"> <img src="../../img/logofile.png" alt=""></div>
+      <!-- 학교 이름 삽입 -->
+      <div class="univ_name" style="color: white"> 성균관대학교 </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -74,7 +77,7 @@
             <a class="nav-link" href="#">My Page</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log out</a>
+            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
           </li>
         </ul>
       </div>
@@ -109,11 +112,13 @@
           </tr>
           <tr>
             <th>현재 포인트</th>
-            <th>150000<th>
+            <th>150000
+            <th>
           </tr>
           <tr>
             <th>결제 후 포인트</th>
-            <th>150000-120000<th>
+            <th>150000-120000
+            <th>
           </tr>
           <tr>
             <th>현재 할인율</th>
@@ -128,8 +133,8 @@
       </div>
 
     </div>
-  <button type="button" onclick="location.href='mainPage.html'">구매 확정</button>
-  <button type="button" onclick="location.href='product.html'">이전 창</button>
+    <button type="button" onclick="location.href='mainPage.html'">구매 확정</button>
+    <button type="button" onclick="location.href='product.html'">이전 창</button>
   </div>
 
   <footer class="py-5 bg-dark">
@@ -138,8 +143,8 @@
     </div>
     <!-- /.container -->
   </footer>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -11,13 +11,13 @@
   <title>대공구</title>
 
 
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/shop-homepage.css" rel="stylesheet">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+
   <style>
     .bulletin {
       width: 100%;
     }
-
 
     .search {
       border: 1px solid gray;
@@ -26,15 +26,6 @@
       padding: 5px;
       margin: 10px;
       background-color: #ffffff;
-    }
-
-    .input_text {
-      font-size: 16px;
-      width: 325px;
-      padding-left: 10px;
-      border: 0px;
-      outline: none;
-      float: left;
     }
 
     .sch_smit {
@@ -46,19 +37,42 @@
       float: right;
       color: #ffffff;
     }
-    .row{
+
+    input {
+      vertical-align: middle;
+    }
+
+    input.form-text {
+      border: 1px solid #bcbcbc;
+      height: 28px;
+    }
+
+    input.img-button {
+      background: url("images/button_search.png") no-repeat;
+      border: none;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .row {
       margin-top: 30px;
     }
+
     .navbar-brand img {
       border: 5px solid gray;
       width: 100px;
     }
   </style>
 </head>
+
 <body>
+  <!-- 위의 메뉴판 부분 -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <img src="logofile.png" alt=""> </div>
+      <div class="navbar-brand"> <img src="../../img/logofile.png" alt=""> </div>
+      <!-- 학교 이름 삽입 -->
+      <div class="univ_name" style="color: white"> 성균관대학교 </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -73,22 +87,18 @@
             <a class="nav-link" href="consumer_page.html">My Page</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="start.html">Log out</a>
+            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
           </li>
         </ul>
       </div>
     </div>
+    </div>
   </nav>
-
   <!-- Page Content -->
   <div class="container">
-
     <div class="row">
-      <div class="col-lg-3">
-        <h1 class="my-4">메인 창</h1>
-      </div>
       <div class="col-lg-9">
-
+        <!-- 상품 전시, 맨 위 전광판 -->
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -116,14 +126,27 @@
           </a>
         </div>
         <hr>
-        <h4>검색</h4>
-        <center>
-          <div class="search">
-            <input type="text" class="input_text" placeholder="검색어 입력" />
-            <button type="submit" class="sch_smit" onclick="location.href='search.html'">검색</button>
-          </div>
-        </center>
+
+        <!-- 상품 검색 -->
+        <div class="navbar-search">
+          <h4>검색</h4>
+          <center>
+            <div class="input-group md-form form-sm form-2 pl-0">
+              <input class="form-control my-0 py-1 red-border" type="text" placeholder="검색" aria-label="Search">
+              <div class="input-group-append">
+                <button type="button" name="button" class="btn btn-secondary">
+                  <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
+                    <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </center>
+        </div>
         <hr>
+
+        <!-- 상품 목록 -->
         <h4>상품 목록</h4>
         <div class="row">
           <div class="col-lg-4 col-md-6 mb-4">
@@ -163,8 +186,23 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <ul class="pagination justify-content-center">
+              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </div>
+        </div>
         <!-- /.row -->
         <hr>
+
+        <!-- 공동구매 현황 표 -->
         <div class="bulletin">
           <h4>공동 구매 현황</h4>
           <table class="table">
@@ -179,18 +217,27 @@
 
             </tbody>
           </table>
-
+          <div class="row">
+            <div class="col">
+              <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-
       </div>
-      <!-- /.col-lg-9 -->
-
     </div>
-    <!-- /.row -->
-
+    <!-- /.col-lg-9 -->
+  </div>
+  <!-- /.row -->
   </div>
   <!-- /.container -->
-
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
@@ -200,8 +247,8 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
