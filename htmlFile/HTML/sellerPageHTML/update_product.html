@@ -5,6 +5,58 @@
     <title></title>
   </head>
   <body>
+    <div class="product_update_window">
+      <h1>상품 등록</h1>
+      <table class="table">
+        <tr>
+          <th>상품 이름</th>
+          <th> <input type="text" name="product_name" value=""> </th>
+        </tr>
+        <tr>
+          <th>상품 이미지</th>
+          <th>
+            <form method="post" enctype="multipart/form-data" action="change.php">
+              <input type="file" name="pic" />
+              <input type="submit" value="Upload" />
+            </form>
+          </th>
+        </tr>
+        <tr>
+          <th>처음 가격</th>
+          <th> <input type="number" name="price" value="">원 </th>
+        </tr>
+        <tr>
+          <th> 판매 최소 개수(할인율 1) </th>
+          <th> <input type="number" name="discount_num1" value="">개 </th>
+        </tr>
+        <tr>
+          <th> 할인율 1 </th>
+          <th> <input type="number" name="discount1" value="">% </th>
+        </tr>
+        <tr>
+          <th> 할인율 2 도달 개수 </th>
+          <th> <input type="number" name="discount_num2" value="">개 </th>
+        </tr>
+        <tr>
+          <th> 할인율 2 </th>
+          <th> <input type="number" name="discount2" value="">% </th>
+        </tr>
+        <tr>
+          <th> 할인율 3 도달 개수 </th>
+          <th> <input type="number" name="discount_num3" value="">개 </th>
+        </tr>
+        <tr>
+          <th> 할인율 3 </th>
+          <th> <input type="number" name="discount3" value="">% </th>
+        </tr>
+        <tr>
+          <th> 상품 설명 </th>
+          <th>  <textarea name="message" rows="10" cols="30">The cat was playing in the garden.</textarea> </th>
+        </tr>
+      </table>
+      <button type="button" class="btn btn-primary" onclick="self.close();">등록</button>
+      <button type="button" class="btn btn-primary" onclick="self.close();">취소</button>
+    </div>
 
   </body>
 </html>
