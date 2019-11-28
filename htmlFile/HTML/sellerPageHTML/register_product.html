@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <th> 판매 최소 개수(할인율 1) </th>
-        <th> <input type="number" name="discount1_num" value="">개 </th>
+        <th> <input type="number" name="discount_num1" value="">개 </th>
       </tr>
       <tr>
         <th> 할인율 1 </th>
@@ -39,7 +39,7 @@
       </tr>
       <tr>
         <th> 할인율 2 도달 개수 </th>
-        <th> <input type="number" name="discount2_num" value="">개 </th>
+        <th> <input type="number" name="discount_num2" value="">개 </th>
       </tr>
       <tr>
         <th> 할인율 2 </th>
@@ -47,15 +47,21 @@
       </tr>
       <tr>
         <th> 할인율 3 도달 개수 </th>
-        <th> <input type="number" name="discount3_num" value="">개 </th>
+        <th> <input type="number" name="discount_num3" value="">개 </th>
       </tr>
       <tr>
         <th> 할인율 3 </th>
         <th> <input type="number" name="discount3" value="">% </th>
       </tr>
+      <tr>
+        <th> 상품 설명 </th>
+        <th> <textarea name="message" rows="10" cols="30">The cat was playing in the garden.</textarea> </th>
+      </tr>
     </table>
-    <button type="button" class="btn" onclick="self.close();">등록</button>
-    <button type="button" class="btn" onclick="self.close();">취소</button>
+    <center>
+      <button type="button" class="btn btn-primary" onclick="self.close();">등록</button>
+      <button type="button" class="btn btn-primary" onclick="self.close();">취소</button>
+    </center>
   </div>
   <script src="../../vendor/jquery/jquery.min.js"></script>
   <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

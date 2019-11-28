@@ -54,7 +54,16 @@
       border: 5px solid gray;
       width: 100px;
     }
+
+    .container h1 {
+      margin-top: 50px;
+    }
+
+    .btn{
+      margin: 10px;
+    }
   </style>
+
 </head>
 
 <body>
@@ -86,16 +95,9 @@
 
 
   <div class="container">
-
-    <center>
-      <div class="search">
-        <input type="text" class="input_text" placeholder="검색어 입력" />
-        <button type="submit" class="sch_smit" onclick="location.href='search.html'">검색</button>
-      </div>
-    </center>
-
+    <h1>상품 공동 구매</h1>
     <div class="product_description">
-      <img class="product_img" src="chicken1.jpg" alt="">
+      <img class="product_img" src="../../img/chicken1.jpg" alt="">
       <div class="buy_one">
         <table class="table">
           <tr>
@@ -133,8 +135,10 @@
       </div>
 
     </div>
-    <button type="button" onclick="location.href='mainPage.html'">구매 확정</button>
-    <button type="button" onclick="location.href='product.html'">이전 창</button>
+    <center>
+      <button type="button" class="btn btn-primary" onclick="location.href='mainPage.html'">구매 확정</button>
+      <button type="button" class="btn btn-primary" onclick="location.href='product.html'">이전 창</button>
+    </center>
   </div>
 
   <footer class="py-5 bg-dark">
