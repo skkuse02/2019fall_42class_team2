@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+  <style>
+    .bulletin {
+      width: 100%;
+    }
+
+    .search {
+      border: 1px solid gray;
+      height: 40px;
+      width: 400px;
+      padding: 5px;
+      margin: 10px;
+      background-color: #ffffff;
+    }
+
+    .input_text {
+      font-size: 16px;
+      width: 325px;
+      padding-left: 10px;
+      border: 0px;
+      outline: none;
+      float: left;
+    }
+
+    .sch_smit {
+      width: 50px;
+      height: 100%;
+      border: 0px;
+      background: gray;
+      outline: none;
+      float: right;
+      color: #ffffff;
+    }
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
+    .navbar-search{
+      margin: 50px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <div class="navbar-brand"> <a href="mainPage.html"><img src="../../img/logofile.png" alt=""></a> </div>
+      <!-- 학교 이름 삽입 -->
+      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="seller_page.html">My Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="navbar-search">
+      <h4>검색</h4>
+      <center>
+        <div class="input-group md-form form-sm form-2 pl-0">
+          <input class="form-control my-0 py-1 red-border" type="text" placeholder="검색" aria-label="Search">
+          <div class="input-group-append">
+            <button type="button" name="button" class="btn btn-secondary">
+              <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path><path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path></svg>
+            </button>
+          </div>
+        </div>
+      </center>
+    </div>
+    <hr>
+    <div class="bulletin">
+      <h4>상품 판매 목록</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>상품 이미지</th>
+            <th>이름</th>
+            <th>현재 가격</th>
+            <th>현재 개수</th>
+            <th>현재 할인율</th>
+            <th>최대 할인율</th>
+            <th>기간</th>
+          </tr>
+        </thead>
+        <!-- 상품 정보 -->
+        <tbody>
+          <tr>
+            <td><a href="product.html"><img src="../../img/chicken1.jpg" width=150px alt=""></a> </td>
+            <td><a href="product.html">치킨</a></td>
+            <td>30000</td>
+            <td>5</td>
+            <td>6%</td>
+            <td>15%</td>
+            <td>~2019.12.08</td>
+          </tr>
+          <tr>
+            <td> <a href="product.html"><img src="../../img/chicken1.jpg" width=150px alt=""></a> </td>
+            <td><a href="product.html">치킨</a></td>
+            <td>30000</td>
+            <td>5</td>
+            <td>6%</td>
+            <td>15%</td>
+            <td>~2019.12.08</td>
+          </tr>
+          <tr>
+            <td> <a href="product.html"><img src="../../img/chicken1.jpg" width=150px alt=""></a> </td>
+            <td><a href="product.html">치킨</a></td>
+            <td>30000</td>
+            <td>5</td>
+            <td>6%</td>
+            <td>15%</td>
+            <td>~2019.12.08</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
