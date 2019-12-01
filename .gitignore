@@ -1,0 +1,2 @@
+# ignore database information file
+src/backend/config/database.js
