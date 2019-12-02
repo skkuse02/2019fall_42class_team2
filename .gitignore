@@ -1,6 +1,3 @@
-# ignore database information file
 src/backend/config/database.js
-
-# ignore node module files
-
 src/backend/team2/node_modules/
+package-lock.json

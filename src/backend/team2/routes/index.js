@@ -6,6 +6,7 @@ var express = require('express')
 
  var join = require('./join/index')
 
+ //app.use(ex)
  router.get('/', function(req,res){
      console.log('indexjs . path loaded');
      res.sendFile(path.join(__dirname + "/../public/htmlFile/HTML/loginPageHTML/register_consumer.html"))
