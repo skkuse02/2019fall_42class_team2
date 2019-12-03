@@ -1,0 +1,3 @@
+src/backend/config/database.js
+src/backend/team2/node_modules/
+package-lock.json
