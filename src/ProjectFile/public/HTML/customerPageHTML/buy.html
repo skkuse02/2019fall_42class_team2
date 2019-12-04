@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+  <style>
+    .bulletin {
+      width: 100%;
+    }
+
+
+    .search {
+      border: 1px solid gray;
+      height: 40px;
+      width: 400px;
+      padding: 5px;
+      margin: 10px;
+      background-color: #ffffff;
+    }
+
+    .input_text {
+      font-size: 16px;
+      width: 325px;
+      padding-left: 10px;
+      border: 0px;
+      outline: none;
+      float: left;
+    }
+
+    .sch_smit {
+      width: 50px;
+      height: 100%;
+      border: 0px;
+      background: gray;
+      outline: none;
+      float: right;
+      color: #ffffff;
+    }
+
+    .product_description {
+      border: 2px solid;
+      display: flex;
+    }
+
+    .product_img {
+      width: 300px;
+      height: 200px;
+    }
+
+    .navbar-brand img {
+      border: 5px solid gray;
+      width: 100px;
+    }
+
+    .container h1 {
+      margin-top: 50px;
+    }
+
+    .btn{
+      margin: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <div class="navbar-brand"> <a href="mainPage.html"><img src="../../img/logofile.png" alt=""></a> </div>
+      <!-- 학교 이름 삽입 -->
+      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Page</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <h1>상품 공동 구매</h1>
+    <div class="product_description">
+      <img class="product_img" src="../../img/chicken1.jpg" alt="">
+      <div class="buy_one">
+        <table class="table">
+          <tr>
+            <th>상품 이름</th>
+            <th>치킨</th>
+          </tr>
+          <tr>
+            <th>구매 개수</th>
+            <th> <input type="number" max="10" min="0" name="product_num" value="product_num"> </th>
+          </tr>
+          <tr>
+            <th>가격</th>
+            <th>120000</th>
+          </tr>
+          <tr>
+            <th>현재 포인트</th>
+            <th>150000
+            <th>
+          </tr>
+          <tr>
+            <th>결제 후 포인트</th>
+            <th>150000-120000
+            <th>
+          </tr>
+          <tr>
+            <th>현재 할인율</th>
+            <th>6%</th>
+          </tr>
+          <tr>
+            <th>구매 확정 후 돌려받을 가격</th>
+            <th>7200</th>
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+    <center>
+      <button type="button" class="btn btn-primary" onclick="location.href='mainPage.html'">구매 확정</button>
+      <button type="button" class="btn btn-primary" onclick="location.href='product.html'">이전 창</button>
+    </center>
+  </div>
+
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

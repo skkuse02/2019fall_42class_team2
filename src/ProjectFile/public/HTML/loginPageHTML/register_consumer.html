@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+  <style media="screen">
+    h1 {
+      text-align: center;
+    }
+  </style>
+  <script type="text/javascript">
+    function schoolChange() {
+      var target = document.getElementById("schoolName");
+      var emailText = document.getElementById("schoolEmail");
+      var value = target.options[document.getElementById("schoolName").selectedIndex].value;
+      if (value == "skku") {
+        emailText.value = "@g.skku.edu";
+      } else if (value == "seoul") {
+        emailText.value = "@snu.ac.kr";
+      } else if (value == "yonsei") {
+        emailText.value = "@yonsei.ac.kr";
+      } else if (value == "korea") {
+        emailText.value = "@korea.ac.kr";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>구매자 회원가입</h1>
+  <hr>
+  <form action ="/join" method = "post">
+  <div id="box">
+    <div class="form-group" id="divId">
+      <label for="inputId" class="col-lg-2 control-label">아이디</label>
+      <div class="col-lg-10 input-group">
+        <input type="text" class="form-control" id="id" data-rule-required="true" placeholder="아이디" maxlength="30">
+        <button type="button" class="btn btn-secondary" name="button" style="margin-left: 10px;">아이디 인증</button>
+      </div>
+    </div>
+    <div class="form-group" id="divPassword">
+      <label for="inputPassword" class="col-lg-2 control-label">패스워드</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="password" data-rule-required="true" placeholder="패스워드" maxlength="30">
+      </div>
+    </div>
+    <div class="form-group" id="divPasswordCheck">
+      <label for="inputPasswordCheck" class="col-lg-2 control-label">패스워드 확인</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="passwordCheck" data-rule-required="true" placeholder="패스워드 확인" maxlength="30">
+      </div>
+    </div>
+    <div class="form-group" id="divName">
+      <label for="inputName" class="col-lg-2 control-label">이름</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="이름" maxlength="15">
+      </div>
+    </div>
+    <div class="form-group" id="divName">
+      <label for="inputSchool" class="col-lg-2 control-label">학교</label>
+      <div class="col-lg-10">
+        <select class="form-control" id="schoolName" onchange="schoolChange()">
+          <option value="">선택하시오</option>
+          <option value="skku">성균관대학교</option>
+          <option value="seoul">서울대학교</option>
+          <option value="yonsei">연세대학교</option>
+          <option value="korea">고려대학교</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group" id="divEmail">
+      <label for="inputEmail" class="col-lg-2 control-label">이메일</label>
+      <div class="col-lg-10 input-group">
+        <input type="text" class="form-control" id="emailID" data-rule-required="true" placeholder="학교 이메일 아이디" maxlength="40">
+        <input type="text" class="form-control" id="schoolEmail" readonly placeholder="학교 메일 주소">
+        <button type="button" class="btn btn-secondary" name="button" style="margin-left: 10px;">이메일 인증</button>
+      </div>
+    </div>
+  </div>
+
+  <center>
+    <button type="submit" name="button" class="btn btn-primary btn-lg" onclick="self.close();">회원 가입</button>
+    <button type="button" name="button" class="btn btn-primary btn-lg" onclick="self.close();">취소</button>
+  </center>
+</form>
+
+
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

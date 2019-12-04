@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../css/shop-homepage.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="product_register_window">
+    <h1>상품 등록</h1>
+    <hr>
+    <div class="form-group" id="divProductName">
+      <label for="inputId" class="col-lg-2 control-label">상품 이름</label>
+      <div class="col-lg-10 input-group">
+        <input type="text" class="form-control" id="product_name" placeholder="상품 이름" maxlength="30">
+      </div>
+    </div>
+    <!-- 이름 -->
+    <div class="form-group" id="divProductName">
+      <label for="inputId" class="col-lg-2 control-label">상품 이미지</label>
+      <div class="col-lg-10 input-group">
+        <input type="file" name="product_img" />
+      </div>
+    </div>
+    <!-- 상품 이미지, 미리보기 백엔드로 추가 가능?  -->
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">첫 가격</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" min="0" id="product_price" placeholder="가격">원
+      </div>
+    </div>
+    <!-- 할인 없는 가격  -->
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 1</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" max="100" min="0" id="discount1" placeholder="할인율">%
+      </div>
+    </div>
+
+    <!-- 할인율 및 할인에 필요한 개수  -->
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 1 도달 개수</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" min="0" id="discount_num1" placeholder="개수">개
+      </div>
+    </div>
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 2</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" max="100" min="0" id="discount2" placeholder="할인율">%
+      </div>
+    </div>
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 2 도달 개수</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" min="0" id="discount_num2" placeholder="개수">개
+      </div>
+    </div>
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 3</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" max="100" min="0" id="discount3" placeholder="할인율">%
+      </div>
+    </div>
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">할인율 3 도달 개수</label>
+      <div class="col-lg-10 input-group">
+        <input type="number" class="form-control" min="0" id="discount_num3" placeholder="개수">개
+      </div>
+    </div>
+    <div class="form-group" id="divPrice">
+      <label for="inputId" class="col-lg-2 control-label">상품 상세 설명</label>
+      <div class="col-lg-10 input-group">
+        <textarea name="message" rows="10" cols="50" placeholder="상세 설명"></textarea>
+      </div>
+    </div>
+
+    <center>
+      <button type="button" class="btn btn-primary" onclick="self.close();">등록</button>
+      <button type="button" class="btn btn-primary" onclick="self.close();">취소</button>
+    </center>
+  </div>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
