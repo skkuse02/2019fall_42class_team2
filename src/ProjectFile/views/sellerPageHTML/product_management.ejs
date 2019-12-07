@@ -19,7 +19,7 @@
   </style>
   <script type="text/javascript">
     function registerOpen() {
-      var popUrl = "register_product.html"; //팝업창에 출력될 페이지 URL
+      var popUrl = "../../seller/register_product"; //팝업창에 출력될 페이지 URL
       var popOption = "width=400px, height=600px, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
       window.open(popUrl, "", popOption);
     }
@@ -44,8 +44,11 @@
           <li class="nav-item">
             <a class="nav-link" href="seller_page.html">My Page</a>
           </li>
+          <!-- 변경된 부분 -->
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+          <form action="/seller/logout/logout" method="post">
+            <input class="nav-link" type="submit" value="Log out">
+          </form>
           </li>
         </ul>
       </div>
@@ -57,35 +60,39 @@
       <thead>
         <tr>
           <th>상품 이미지</th>
+          <th>대상 대학교</th>
           <th>이름</th>
           <th>현재 가격</th>
           <th>현재 개수</th>
-          <th>현재 할인율</th>
-          <th>최대 할인율</th>
-          <th>기간</th>
+          <th>현재 할인 가격</th>
+          <th>최대 할인 가격</th>
+          <th>남은 기간</th>
           <th>수정/삭제
           <th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><img src="chicken1.jpg" width=150px alt=""></td>
-          <td>치킨</td>
-          <td>30000</td>
-          <td>5</td>
-          <td>6%</td>
-          <td>15%</td>
-          <td>~2019.12.08</td>
-          <td>
-            <button type="button" class="btn btn-primary" name="button" onclick="javascript:updateOpen();">수정</button>
-            <button type="button" class="btn btn-primary" name="button">삭제</button>
-          </td>
-        </tr>
+        <% for(var i =0; i< length; i++) {%>
+          <tr>
+            <td><img src="<%=img_src[i]%>" width="150px"></td>
+            <td><%=univ[i]%></td>
+            <td><%=item_name[i] %></td>
+            <td><%=price[i] %></td>
+            <td><%=item_number[i] %></td>
+            <td><%=sale1[i] %></td>
+            <td><%=max_sale[i] %></td>
+            <td><%=period[i] %></td>
+            <td>
+                <button type="button" class="btn btn-primary" name="button" onclick="javascript:updateOpen();">수정</button>
+                <button type="button" class="btn btn-primary" name="button">삭제</button>
+            </td>
+          </tr>
+        <%} %>
       </tbody>
     </table>
     <center>
       <button type="button" class="btn btn-primary" onclick="javascript:registerOpen();">등록</button>
-      <button type="button" class="btn btn-primary" onclick="location.href='seller_page.html'">취소</button>
+      <button type="button" class="btn btn-primary" onclick="location.href='/seller/seller_page/product_management/register_product'">취소</button>
     </center>
   </div>
 </body>

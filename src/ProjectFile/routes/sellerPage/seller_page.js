@@ -1,18 +1,21 @@
 var express = require('express');
 var router = express.Router();
-//var path = require('path');
 var mysql = require("mysql");
 var dbconfig = require('../../config/database.js');
 var connection = mysql.createConnection(dbconfig);
+//var moment = require('moment');
 
+/*
+router.get('/product_management/register_product', function(req, res){
+  res.render('sellerPageHTML/register_product');
+})
+*/
 
-/* 시작 화면 */
-router.get('/', function(req, res, next) {
-  connection.query("SELECT * from consumer", function(err,results){
-    if(err){ console.log(err); }
-    console.log(results);
-  });
-  res.render('start');
-});
-
+// logout
+/*
+router.post('/sellerlogout', function(req, res){
+  res.clearCookie('seller');
+  res.render('/'); // redirect to main
+})
+*/
 module.exports = router;

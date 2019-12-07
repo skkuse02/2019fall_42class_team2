@@ -95,8 +95,11 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <!-- 변경된 부분 -->
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+          <form action="/seller/logout/logout" method="post">
+            <input class="nav-link" type="submit" value="Log out">
+          </form>
           </li>
         </ul>
       </div>
@@ -109,8 +112,10 @@
         <h1 class="my-4">판매자 창</h1>
         <div class="list-group">
           <button class="list-group-item btn1">개인 정보</button>
-          <a href="product_management.html" class="list-group-item btn2">상품 관리</a>
-        </div>
+          <form action="/seller/product_management/" method = "get">
+            <input type="submit" class="list-group-item btn2" value="상품 관리">
+          </form>
+          </div>
       </div>
       <!-- /.col-lg-3 -->
       <div class="col-lg-9" width=100%>
@@ -118,15 +123,15 @@
         <table class="table my_info">
           <tr>
             <td>이름</td>
-            <td>홍길동</td>
+            <td><%=seller_name%></td>
           </tr>
           <tr>
             <td>회사</td>
-            <td>성균회사</td>
+            <td><%=seller_company%></td>
           </tr>
           <tr>
             <td>포인트</td>
-            <td>300000</td>
+            <td><%=seller_point%></td>
           </tr>
         </table>
         <div class="bulletin">
@@ -140,6 +145,15 @@
               <th>할인율</th>
             </thead>
             <tbody>
+              <% for(var i = 0; i < length; i++){ %>
+                <tr>
+                  <td><%=item_name[i] %></td>
+                  <td><%=period[i] %></td>
+                  <td><%=price[i]%></td>
+                  <td><%=item_number[i]%></td>
+                  <td><%=cur_sale[i]%>%</td>
+                </tr>
+             <% } %>
             </tbody>
           </table>
         </div>

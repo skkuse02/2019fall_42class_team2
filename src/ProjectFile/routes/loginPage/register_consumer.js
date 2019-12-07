@@ -38,7 +38,7 @@ const crypto = require('crypto');
        return res.render('loginPageHTML/register_consumer', {pass:'3'});
      }else{ //모든 조건 만족
        //consumer 데이터베이스에 집어 넣기
-       connection.query('INSERT INTO Consumer (CID, name, password, UnivID, Email, Point, salt) values (?,?,?,?,?,?,?)', [id, name, safepw, school, email + emailtail, '0', salt] ,function(err, rows) {
+       connection.query('INSERT INTO Consumer (CID, c_name, password, UnivID, Email, Point, salt) values (?,?,?,?,?,?,?)', [id, name, safepw, school, email + emailtail, '0', salt] ,function(err, rows) {
          if(err) { throw err;}
          console.log("Registered!");
        });

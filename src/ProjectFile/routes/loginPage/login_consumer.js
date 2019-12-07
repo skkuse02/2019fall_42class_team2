@@ -29,15 +29,23 @@ router.post('/consumerlogin', function(req,res,next){
     let lockedpw=results[0].password;
     let salt = results[0].salt;
     let hashPassword = crypto.createHash("sha512").update(pw + salt).digest("hex");
+    //학교정보 가져오기
+    let univ = results[0].UnivID;
     //비밀번호 확인
     if(lockedpw == hashPassword)
     {
-      console.log("판매자 로그인 성공");
-      res.cookie("SID", id , {
+      console.log("구매자 로그인 성공");
+      // ID, 학교 정보 cookie로 전달
+      res.cookie("CID", id , {
          expires: new Date(Date.now() + 9000000),
          httpOnly: true
        });
-      return res.render("customerPageHTML/consumer_page");
+      res.cookie("UnivID", univ , {
+        expires: new Date(Date.now() + 9000000),
+        httpOnly: true
+      });
+      return res.render("customerPageHTML/mainPage");
+
     }else{
       console.log("비밀번호 불일치");
       return res.render('loginPageHTML/login_consumer', {pass:'2'});

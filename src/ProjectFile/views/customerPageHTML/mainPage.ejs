@@ -55,6 +55,11 @@
       cursor: pointer;
     }
 
+    .nav-item .nav-link{
+      background-color:transparent;
+      border:0px transparent solid;
+    }
+
     .row {
       margin-top: 30px;
     }
@@ -79,15 +84,22 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
+            <!-- 이미 home page라서 변경사항 x -->
             <a class="nav-link" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="consumer_page.html">My Page</a>
+            <!-- 마이 페이지 -->
+            <form action="/customer/consumer_page/" method="post">
+            <input  class="nav-link" type="submit" value="My Page">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+            <!-- 로그 아웃 -->
+            <form action="/customer/logout/logout" method="post">
+            <input class="nav-link" type="submit" value="Log out">
+            </form>
           </li>
         </ul>
       </div>
@@ -131,8 +143,10 @@
         <div class="navbar-search">
           <h4>검색</h4>
           <center>
+            <!-- 검색 form -->
+            <form class="" action="index.html" method="post">
             <div class="input-group md-form form-sm form-2 pl-0">
-              <input class="form-control my-0 py-1 red-border" type="text" placeholder="검색" aria-label="Search">
+              <input class="form-control my-0 py-1 red-border" name="search" type="text" placeholder="검색" aria-label="Search">
               <div class="input-group-append">
                 <button type="button" name="button" class="btn btn-secondary" onclick="location.href='search.html'">
                   <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -142,6 +156,7 @@
                 </button>
               </div>
             </div>
+            </form>
           </center>
         </div>
         <hr>

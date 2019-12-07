@@ -14,6 +14,7 @@ var c_mainPageRouter = require('./routes/customerPage/mainPage');
 var c_point_chargeRouter = require('./routes/customerPage/point_charge');
 var c_productRouter = require('./routes/customerPage/product');
 var c_searchRouter = require('./routes/customerPage/search');
+var c_logoutRouter = require('./routes/customerPage/logout');
 //login page router
 var l_login_consumerRouter = require('./routes/loginPage/login_consumer');
 var l_login_sellerRouter = require('./routes/loginPage/login_seller');
@@ -24,6 +25,7 @@ var s_product_managementRouter = require('./routes/sellerPage/product_management
 var s_register_productRouter = require('./routes/sellerPage/register_product');
 var s_seller_pageRouter = require('./routes/sellerPage/seller_page');
 var s_update_productRouter = require('./routes/sellerPage/update_product');
+var s_logoutRouter = require('./routes/sellerPage/logout');
 
 var app = express();
 
@@ -46,16 +48,18 @@ app.use('/customer/mainPage', c_mainPageRouter);
 app.use('/customer/point_charge', c_point_chargeRouter);
 app.use('/customer/product', c_productRouter);
 app.use('/customer/search', c_searchRouter);
+app.use('/customer/logout', c_logoutRouter);
 //login page router 주소 지정
 app.use('/login/login_consumer', l_login_consumerRouter);
 app.use('/login/login_seller', l_login_sellerRouter);
 app.use('/login/register_consumer', l_register_consumerRouter);
 app.use('/login/register_seller', l_register_sellerRouter);
 //seller page router 주소 지정
-app.use('/login/product_management', s_product_managementRouter);
-app.use('/login/register_product', s_register_productRouter);
-app.use('/login/seller_page', s_seller_pageRouter);
-app.use('/login/update_product', s_update_productRouter);
+app.use('/seller/product_management', s_product_managementRouter);
+app.use('/seller/register_product', s_register_productRouter);
+app.use('/seller/seller_page', s_seller_pageRouter);
+app.use('/seller/update_product', s_update_productRouter);
+app.use('/seller/logout', s_logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,13 +6,9 @@ var dbconfig = require('../../config/database.js');
 var connection = mysql.createConnection(dbconfig);
 
 
-/* 시작 화면 */
+/* 구매자 초기 화면으로 */
 router.get('/', function(req, res, next) {
-  connection.query("SELECT * from consumer", function(err,results){
-    if(err){ console.log(err); }
-    console.log(results);
-  });
-  res.render('start');
+  res.render('customerPageHTML/mainPage');
 });
 
 module.exports = router;

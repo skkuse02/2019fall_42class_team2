@@ -92,8 +92,8 @@
     });
 
     function popupOpen() {
-      var popUrl = "point_charge.html"; //팝업창에 출력될 페이지 URL
-      var popOption = "width=370, height=360, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
+      var popUrl = "../../customer/point_charge"; //팝업창에 출력될 페이지 URL
+      var popOption = "width=500, height=360, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
       window.open(popUrl, "", popOption);
     }
   </script>
@@ -105,24 +105,31 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <a href="mainPage.html"><img src="/img/logofile.png" alt=""></a> </div>
+      <div class="navbar-brand"><img src="/img/logofile.png" onclick="location.href='/customer/mainPage/'" alt=""></a> </div>
       <!-- 학교 이름 삽입 -->
-      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <div class="univ_name" style="color: white"> <%=univname%> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="mainPage.html">Home</a>
+            <!-- 구매자 초기 화면으로 -->
+            <form action="/customer/mainPage/" method="get">
+              <input class="nav-link" type="submit" value="Home">
+            </form>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="consumer_page.html">My Page
+            <a class="nav-link" href="#">My Page
               <span class="sr-only">(current)</span>
             </a>
           </li>
+          <!-- 로그아웃 -->
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+            <form action="/customer/logout/logout" method="post">
+              <input class="nav-link" type="submit" value="Log out">
+            </form>
+            <!--<a class="nav-link" href="../loginPageHTML/start.html">Log out</a>-->
           </li>
         </ul>
       </div>
@@ -146,15 +153,15 @@
         <table class="table my_info">
           <tr>
             <td>이름</td>
-            <td>홍길동</td>
+            <td><%= c_name %></td>
           </tr>
           <tr>
             <td>학교</td>
-            <td>성균관대</td>
+            <td><%=univname%></td>
           </tr>
           <tr>
             <td>포인트</td>
-            <td>300000</td>
+            <td><%= c_point %></td>
           </tr>
         </table>
         <div class="bulletin">
@@ -162,12 +169,21 @@
           <table class="table">
             <thead>
               <th>상품명</th>
-              <th>기간</th>
-              <th>가격</th>
-              <th>개수</th>
-              <th>할인율</th>
+              <th>남은 기간</th>
+              <th>구매한 상품 금액</th>
+              <th>구매한 개수</th>
+              <th>현재 할인율</th>
             </thead>
             <tbody>
+              <% for(var i=0; i<Length; i++){ %>
+              <tr>
+                <td><%= itemname[i] %></td>
+                <td><%= itemdate[i] %></td>
+                <td><%= price[i] %> 원</td>
+                <td><%= itemcount[i] %> 개</td>
+                <td><%= disrate[i] %> %</td>
+              </tr>
+              <% } %>
 
             </tbody>
           </table>
@@ -207,3 +223,11 @@
 </body>
 
 </html>
+
+
+
+
+<form class="" action="index.html" method="post">
+  <input type="submit" name="" value="">
+  <input type="submit" name="" value="">
+</form>

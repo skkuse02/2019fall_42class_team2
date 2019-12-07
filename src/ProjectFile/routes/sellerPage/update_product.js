@@ -8,10 +8,7 @@ var connection = mysql.createConnection(dbconfig);
 
 /* 시작 화면 */
 router.get('/', function(req, res, next) {
-  connection.query("SELECT * from consumer", function(err,results){
-    if(err){ console.log(err); }
-    console.log(results);
-  });
+
   res.render('start');
 });
 

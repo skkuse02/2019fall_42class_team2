@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+    <!--jquery 사용-->
+   <script src='http://code.jquery.com/jquery-latest.js'></script>
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/shop-homepage.css" rel="stylesheet">
   <style media="screen">
@@ -49,7 +51,26 @@
     <%
   }%>
 
+  <script>
+      $('#ajax_test').click( function() {
+          $('#result').html('');
+          $.ajax({
+              url: 'http://localhost:3000/ajax',
+              dataType: 'json',
+              type: 'POST',
+              data: {'msg':$('#msg').val()},
+              success: function(result) {
+                  if ( result['result'] == true ) {
+                      $('#result').html(result['msg']);
+                  }
+              }
+          });
+      })
+    </script>
   <h1>구매자 회원가입</h1>
+  <!--  임시로 -->
+  <input type="button" id="ajax_test" value="ajax_test"/>
+
   <hr>
   <form action ="/login/register_consumer/register" method = "post">
   <div id="box">
