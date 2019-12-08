@@ -55,9 +55,9 @@
       cursor: pointer;
     }
 
-    .nav-item .nav-link{
-      background-color:transparent;
-      border:0px transparent solid;
+    .nav-item .nav-link {
+      background-color: transparent;
+      border: 0px transparent solid;
     }
 
     .row {
@@ -77,7 +77,7 @@
     <div class="container">
       <div class="navbar-brand"> <img src="/img/logofile.png" alt=""> </div>
       <!-- 학교 이름 삽입 -->
-      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <div class="univ_name" style="color: white"><%= Univname %> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -92,13 +92,13 @@
           <li class="nav-item">
             <!-- 마이 페이지 -->
             <form action="/customer/consumer_page/" method="post">
-            <input  class="nav-link" type="submit" value="My Page">
+              <input class="nav-link" type="submit" value="My Page">
             </form>
           </li>
           <li class="nav-item">
             <!-- 로그 아웃 -->
             <form action="/customer/logout/logout" method="post">
-            <input class="nav-link" type="submit" value="Log out">
+              <input class="nav-link" type="submit" value="Log out">
             </form>
           </li>
         </ul>
@@ -111,6 +111,7 @@
     <div class="row">
       <div class="col-lg-9">
         <!-- 상품 전시, 맨 위 전광판 -->
+        <!--
         <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
           <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -137,33 +138,51 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+        -->
         <hr>
-
         <!-- 상품 검색 -->
         <div class="navbar-search">
-          <h4>검색</h4>
+          <h4>상품명 검색</h4>
           <center>
             <!-- 검색 form -->
-            <form class="" action="index.html" method="post">
-            <div class="input-group md-form form-sm form-2 pl-0">
-              <input class="form-control my-0 py-1 red-border" name="search" type="text" placeholder="검색" aria-label="Search">
-              <div class="input-group-append">
-                <button type="button" name="button" class="btn btn-secondary" onclick="location.href='search.html'">
-                  <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
-                    <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
-                  </svg>
-                </button>
+            <form class="" action="/customer/search/" method="post">
+              <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" name="search" type="text" placeholder="검색" aria-label="Search">
+                <div class="input-group-append">
+                  <!-- 검색하기 -->
+                  <button type="submit" name="search_button" class="btn btn-secondary" onclick="location.href='/customer/search/'">
+                    <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
+                      <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
-            </div>
             </form>
           </center>
         </div>
         <hr>
 
         <!-- 상품 목록 -->
-        <h4>상품 목록</h4>
+        <h4>!추천 상품!</h4>
         <div class="row">
+
+          <% for(var i = 0; i < Length; i++){ %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <img class="card-img-top" src=" <%= Itemurl[i] %> " alt="">
+                <h4 class="card-title">
+                  <%= Itemname[i] %>
+                </h4>
+                <h5><%= Itemprice[i] %>￦</h5>
+                <p class="card-text"><%= Description[i] %></p>
+              </div>
+            </div>
+          </div>
+          <% } %>
+
+          <!-- 원본
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="product.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -176,31 +195,10 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="product.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="product.html">Item Two</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="product.html"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="product.html">Item Three</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-            </div>
-          </div>
+-->
+
         </div>
+        <!--
         <div class="row">
           <div class="col">
             <ul class="pagination justify-content-center">
@@ -214,10 +212,12 @@
             </ul>
           </div>
         </div>
+      -->
         <!-- /.row -->
         <hr>
 
         <!-- 공동구매 현황 표 -->
+        <!--
         <div class="bulletin">
           <h4>공동 구매 현황</h4>
           <table class="table">
@@ -248,22 +248,23 @@
         </div>
       </div>
     </div>
-    <!-- /.col-lg-9 -->
-  </div>
-  <!-- /.row -->
-  </div>
-  <!-- /.container -->
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+  -->
+        <!-- /.col-lg-9 -->
+      </div>
+      <!-- /.row -->
     </div>
     <!-- /.container -->
-  </footer>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      </div>
+      <!-- /.container -->
+    </footer>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="/vendor/jquery/jquery.min.js"></script>
-  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

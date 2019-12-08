@@ -20,7 +20,23 @@
       </div>
     </div>
     <!--판매할 수량-->
+    판매할 수량
     <input type="text" class="form-control" name="total_number" id="total_number" placeholder="판매할 수량" maxlength="30">
+
+    <!--학교 선택-->
+    <div class="form-group" id="divName">
+      <label for="inputSchool" class="col-lg-2 control-label">학교</label>
+      <div class="col-lg-10">
+        <select name="school" class="form-control" id="schoolName" onchange="schoolChange()">
+          <option value="">선택하시오</option>
+          <option value="skku">성균관대학교</option>
+          <option value="seoul">서울대학교</option>
+          <option value="yonsei">연세대학교</option>
+          <option value="korea">고려대학교</option>
+        </select>
+      </div>
+    </div>
+
     <!-- 이름 -->
     <div class="form-group" id="divProductName">
       <label for="inputId" class="col-lg-2 control-label">상품 이미지 주소 (7x4) 크기</label>

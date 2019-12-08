@@ -38,8 +38,10 @@ router.post('/sellerlogin', function(req,res){
          httpOnly: true
        });
 
+       //
        connection.query("SELECT * FROM Item i, Seller s WHERE i.i_status = 1 and i.ISID = s.SID and s.SID = ?",[id], function(err, row){
-        if(err) throw err;
+        //if(err) throw err;
+        console.log(row);
         var item_name = new Array();
         var period = new Array();
         var price = new Array();
@@ -51,9 +53,15 @@ router.post('/sellerlogin', function(req,res){
         var disc_num2 = new Array();
         var disc_num3 = new Array();
         var cur_sale = new Array();
+        //판매하고 있는 물건이 없는 경우 오류 발생했었음.
+        /*
+        if(row.length>0)
+        {
         var seller_name = row[0]['s_name'];
         var seller_company = row[0]['CompanyID'];
         var seller_point = row[0]['Point'];
+        }
+        */
         for(var i = 0; i < row.length; i++)
         {
           item_name[i] = row[i]['i_name'];
@@ -76,20 +84,27 @@ router.post('/sellerlogin', function(req,res){
             cur_sale[i] = max_sale[i];
           }
         }
-        return res.render("sellerPageHTML/seller_page",{
-          item_name: item_name,
-          period: period,
-          item_number: item_number,
-          price: price,
-          sale1: sale1,
-          sale2: sale2,
-          max_sale: max_sale,
-          length: i,
-          seller_name: seller_name,
-          seller_company: seller_company,
-          seller_point: seller_point,
-          cur_sale: cur_sale
-         });
+
+        connection.query("select * from Seller where SID=?",[id],function(err,row){
+          var seller_name = row[0]['s_name'];
+          var seller_company = row[0]['CompanyID'];
+          var seller_point = row[0]['Point'];
+          //드디어 쿼리 쏴줌
+          return res.render("sellerPageHTML/seller_page",{
+            item_name: item_name,
+            period: period,
+            item_number: item_number,
+            price: price,
+            sale1: sale1,
+            sale2: sale2,
+            max_sale: max_sale,
+            length: i,
+            seller_name: seller_name,
+            seller_company: seller_company,
+            seller_point: seller_point,
+            cur_sale: cur_sale
+           });
+        })
       })
     }else{
       console.log("비밀번호 불일치");
