@@ -98,6 +98,22 @@
     }
   </script>
 
+  <script>  //refresh point
+    $(function() {
+      $('#refreshpoint').click(function() {
+        $.ajax({
+          url: '/customer/consumer_page/refreshpoint',
+          type: 'POST',
+          data: {
+          },
+          dataType: 'json',
+          success: function(result) {
+            $('#point').html(result['c_point']);
+          }
+        });
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -160,8 +176,8 @@
             <td><%=univname%></td>
           </tr>
           <tr>
-            <td>포인트</td>
-            <td><%= c_point %></td>
+            <td>포인트  <button type="button" id="refreshpoint">새로고침</button>   </td>
+            <td><div id="point"><%= c_point %></div></td>
           </tr>
         </table>
         <div class="bulletin">

@@ -125,6 +125,19 @@ router.post('/', function(req, res, next) {
 });
 
 
+//point refresh
+router.post('/refreshpoint', function(req, res) {
+  var CID = req.cookies.CID;
+  connection.query('SELECT Point FROM Consumer WHERE CID=?', [CID], function(err, row) {
+      var point=row[0]['Point'];
+      console.log(point);
+      return res.send({
+        c_point: point
+      });
+  });
+});
+
+
 
 
 module.exports = router;

@@ -18,7 +18,6 @@
     $(function() {
       $('#chkid').click(function() {
         var id = $("#id").val();
-
         $.ajax({
           url: '/login/register_seller/idcheck',
           type: 'POST',
@@ -27,7 +26,6 @@
           },
           dataType: 'json',
           success: function(result) {
-
             if (result['data'] == '공백') {
               alert("아이디를 입력해주세요");
             } else if (result['data'] == '존재') {

@@ -38,7 +38,7 @@ router.post('/sellerlogin', function(req,res){
          httpOnly: true
        });
 
-       connection.query("SELECT * FROM Item i, Seller s WHERE i.i_status = 1 i.ISID = s.SID and s.SID = ?",[id], function(err, row){
+       connection.query("SELECT * FROM Item i, Seller s WHERE i.i_status = 1 and i.ISID = s.SID and s.SID = ?",[id], function(err, row){
         if(err) throw err;
         var item_name = new Array();
         var period = new Array();

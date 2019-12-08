@@ -15,9 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/idcheck', function(req, res) {
   var id = req.body.data;
-  console.log(id);
   connection.query('SELECT * FROM Seller WHERE SID=?', [id], function(err, row) {
-
     if (row.length != 0) {
       var data = "존재";
       console.log("판매자 아이디 중복");
@@ -37,6 +35,7 @@ router.post('/idcheck', function(req, res) {
     }
   });
 });
+
 //판매자 회원가입
 router.post('/register', function(req, res) {
   var body = req.body;
