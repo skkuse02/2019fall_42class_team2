@@ -9,7 +9,7 @@ var connection = mysql.createConnection(dbconfig);
 /* 시작 화면 */
 router.get('/', function(req, res, next) {
 
-  res.render('start');
+  res.render('sellerPageHTML/update_product');
 });
 
 module.exports = router;

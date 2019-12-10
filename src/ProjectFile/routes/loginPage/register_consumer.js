@@ -32,6 +32,7 @@ const crypto = require('crypto');
    }
    //아이디 중복 체크
    connection.query('SELECT * FROM Consumer WHERE CID = ?', [id], function(err, data){
+     console.log(data);
      if(data.length!=0)
      {
        console.log("아이디중복");
