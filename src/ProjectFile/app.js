@@ -26,7 +26,7 @@ var s_register_productRouter = require('./routes/sellerPage/register_product');
 var s_seller_pageRouter = require('./routes/sellerPage/seller_page');
 var s_update_productRouter = require('./routes/sellerPage/update_product');
 var s_logoutRouter = require('./routes/sellerPage/logout');
-
+var s_product_soldoutRouter = require('./routes/sellerPage/product_soldout');
 var app = express();
 
 // view engine setup
@@ -60,7 +60,7 @@ app.use('/seller/register_product', s_register_productRouter);
 app.use('/seller/seller_page', s_seller_pageRouter);
 app.use('/seller/update_product', s_update_productRouter);
 app.use('/seller/logout', s_logoutRouter);
-
+app.use('/seller/product_soldout', s_product_soldoutRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
