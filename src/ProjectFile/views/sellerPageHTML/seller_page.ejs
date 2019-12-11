@@ -115,11 +115,6 @@
           <form action="/seller/product_management/" method = "get">
             <input type="submit" class="list-group-item btn2" value="상품 관리">
           </form>
-        </div>
-        <div class="list-group">
-          <form action="/seller/product_soldout/" method = "get">
-            <input type="submit" class="list-group-item btn2" value="완료 내역">
-          </form>
           </div>
       </div>
       <!-- /.col-lg-3 -->
@@ -144,21 +139,19 @@
           <table class="table">
             <thead>
               <th>상품명</th>
-              <th>남은 기간</th>
-              <th>시작가격</th>
-              <th>공구 참여 개수</th>
-              <th>현재 가격</th>
-              <th>적용 할인률</th>
+              <th>기간</th>
+              <th>가격</th>
+              <th>개수</th>
+              <th>할인율</th>
             </thead>
             <tbody>
               <% for(var i = 0; i < length; i++){ %>
                 <tr>
                   <td><%=item_name[i] %></td>
                   <td><%=period[i] %></td>
-                  <td><%=price[i]%>원</td>
-                  <td><%=sale_flag[i]%>개</td>
-                  <td><%=cur_sale[i]%>원</td>
-                  <td><%=(Math.floor((price[i]-cur_sale[i])/price[i]*100))%>%</td>
+                  <td><%=price[i]%></td>
+                  <td><%=item_number[i]%></td>
+                  <td><%=cur_sale[i]%>%</td>
                 </tr>
              <% } %>
             </tbody>

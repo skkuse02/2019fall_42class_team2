@@ -3,7 +3,7 @@ var router = express.Router();
 //var path = require('path');
 var mysql = require("mysql");
 var dbconfig = require('../config/database.js');
-//var update = require('../config/scheduler.js');
+var update = require('../config/scheduler.js');
 var connection = mysql.createConnection(dbconfig);
 
 

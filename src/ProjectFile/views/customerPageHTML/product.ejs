@@ -7,21 +7,60 @@
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/shop-homepage.css" rel="stylesheet">
   <style>
+    body {
+      background-image: url('/img/Gray-background.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    .nav-item .nav-link {
+      background-color: transparent;
+      border: 0px transparent solid;
+    }
+    .main-feature {
+      border: 3px outset;
+      background-color: #333333;
+      margin-bottom: 30px;
+    }
+    .title {
+      color: white;
+      background-color: #555555;
+      font-weight: bold;
+    }
+
     .navbar-brand img {
       border: 5px solid gray;
       width: 100px;
     }
+
     .img_description {
       margin: 10px;
-      padding: 10px;
-      border: 1px solid;
     }
+
     .black {
       font-weight: bold;
-      background-color: darkgray;
+      color: white;
+      background-color: #444444;
       width: 40%;
     }
-    .bottom_gap{
+
+    table {
+      background-color: white;
+    }
+
+    .description {
+      border: 3px outset white;
+      background-color: white;
+      margin: 10px;
+    }
+
+
+    .text-page {
+      margin: 10px;
+      height: 150px;
+    }
+
+    .bottom_gap {
       margin-bottom: 50px;
     }
   </style>
@@ -30,23 +69,31 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <a href="mainPage.html"><img src="/img/logofile.png" alt=""></a> </div>
+      <div class="navbar-brand"><img src="/img/logofile.png" onclick="location.href='/customer/mainPage/'" alt=""></div>
       <!-- 학교 이름 삽입 -->
-      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <div class="univ_name" style="color: white"> <%= Univname %> </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="mainPage.html">Home</a>
+            <!-- 구매자 초기 화면으로 -->
+            <form action="/customer/mainPage/" method="get">
+              <input class="nav-link" type="submit" value="Home">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="consumer_page.html">My Page</a>
-
+            <!-- 마이 페이지 -->
+            <form action="/customer/consumer_page/" method="post">
+              <input class="nav-link" type="submit" value="My Page">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+            <!-- 로그 아웃 -->
+            <form action="/customer/logout/logout" method="post">
+              <input class="nav-link" type="submit" value="Log out">
+            </form>
           </li>
         </ul>
       </div>
@@ -54,74 +101,77 @@
   </nav>
 
   <!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
-      <h1>상세 설명</h1>
+  <main class="pt-4">
+    <div class="container dark-grey-text mt-5 main-feature">
+      <h1 class="navbar title">상세 설명</h1>
       <!--Grid row-->
       <div class="row wow fadeIn">
         <!--Grid column-->
         <div class="col-md-6 mb-4">
           <div class="img_description">
             <center>
-              <img src="/img/chicken1.jpg" class="img-fluid" alt="">
+              <img src="<%= imgsrc %>" class="img-fluid" alt="">
             </center>
           </div>
+          <div class="description">
+            <p class="navbar lead font-weight-bold title">설명</p>
+            <p class="text-page"><%=  description %></p>
+          </div>
         </div>
-        <!--Grid column-->
+
         <!--Grid column-->
         <div class="col-md-6 mb-4">
           <!--Content-->
-          <div class="p-4">
-
+          <div class="p-2">
             <table class="table table-bordered">
               <tr>
                 <th class="black">상품 이름</th>
-                <th>치킨</th>
+                <th><%= itemname %></th>
               </tr>
               <tr>
                 <th class="black">판매자 이름</th>
-                <th>gg</th>
+                <th><%=  sellername %></th>
               </tr>
               <tr>
                 <th class="black">처음 가격</th>
-                <th>30000</th>
+                <th><%=  cur_price %> ￦</th>
               </tr>
               <tr>
-                <th class="black">현재 개수</th>
-                <th>5</th>
+                <th class="black">남은 개수</th>
+                <th><%= is_available %>개 남았습니다</th>
               </tr>
               <tr>
                 <th class="black">현재 할인율</th>
-                <th>6%</th>
-
+                <th><%=  discount %> %</th>
               </tr>
               <tr>
                 <th class="black">현재 가격</th>
-                <th>28200</th>
+                <th><%=  nowprice %> ￦</th>
               </tr>
               <tr>
-                <th class="black">다음 할인율/목표수치</th>
-                <th>10%/10개</th>
+                <th class="black">다음 할인율/목표 달성까지 남은 개수</th>
+                <th><%= nextdisgoal  %></th>
               </tr>
               <tr>
-                <th class="black">최대 할인율/목표수치</th>
-                <th>15%/15개</th>
-              </tr>
-              <tr>
-                <th class="black">기간</th>
-                <th>~2019.12.08</th>
+                <th class="black">남은 시간</th>
+                <th><%=  itemdate %></th>
               </tr>
             </table>
-            <hr>
-            <p class="lead font-weight-bold">설명</p>
-            <p>매우매우 맛있는 치킨!</p>
+
+
           </div>
           <!--Content-->
         </div>
         <!--Grid column-->
       </div>
       <center>
-        <button class="btn btn-primary btn-lg bottom_gap" onclick="location.href='buy.html'">공동 구매</button>
+        <form action="/customer/buy/" method="post">
+          <!-- 다음 page로 보내 줄 정보들-->
+          <input type="hidden" name="ItemID" value="<%= itemid %>"> <!-- 상품의 itemid -->
+          <input type="hidden" name="discount" value="<%= discount %>"> <!-- 상품의 현재 할인율 -->
+          <input type="hidden" name="nowprice" value="<%= nowprice %>"> <!-- 상품 가격 -->
+          <button class="btn btn-secondary btn-lg bottom_gap" type="submit">공동 구매</button>
+        </form>
       </center>
       <!--Grid row-->
     </div>
