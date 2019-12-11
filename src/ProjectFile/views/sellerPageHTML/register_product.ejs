@@ -10,102 +10,112 @@
 
 <body>
   <div class="product_register_window">
-    <form action="/seller/register_product/register" method = "post">
-    <h1>상품 등록</h1>
-    <hr>
-    <div class="form-group" id="divProductName">
-      <label for="inputId" class="col-lg-2 control-label">상품 이름</label>
-      <div class="col-lg-10 input-group">
-        <input type="text" class="form-control" name="product_name" id="product_name" placeholder="상품 이름" maxlength="30">
+    <form action="/seller/register_product/register" method="post">
+      <h1>상품 등록</h1>
+      <hr>
+      <div class="form-group" id="divProductName">
+        <label for="inputId" class="col-lg-2 control-label">상품 이름</label>
+        <div class="col-lg-10 input-group">
+          <input type="text" class="form-control" name="product_name" id="product_name" placeholder="상품 이름" maxlength="30">
+        </div>
       </div>
-    </div>
-    <!--판매할 수량-->
-    판매할 수량
-    <input type="text" class="form-control" name="total_number" id="total_number" placeholder="판매할 수량" maxlength="30">
+      <!--판매할 수량-->
 
-    <!--학교 선택-->
-    <div class="form-group" id="divName">
-      <label for="inputSchool" class="col-lg-2 control-label">학교</label>
-      <div class="col-lg-10">
-        <select name="school" class="form-control" id="schoolName" onchange="schoolChange()">
-          <option value="">선택하시오</option>
-          <option value="skku">성균관대학교</option>
-          <option value="seoul">서울대학교</option>
-          <option value="yonsei">연세대학교</option>
-          <option value="korea">고려대학교</option>
-        </select>
+      <div class="form-group" id="divProductNum">
+        <label for="inputProNum" class="col-lg-2 control-label">판매할 수량</label>
+        <div class="col-lg-10 input-group">
+          <input type="text" class="form-control" name="total_number" id="total_number" placeholder="판매할 수량" maxlength="30">
+        </div>
       </div>
-    </div>
+      <!--학교 선택-->
+      <div class="form-group" id="divName">
+        <label for="inputSchool" class="col-lg-2 control-label">학교</label>
+        <div class="col-lg-10">
+          <select name="school" class="form-control" id="schoolName" onchange="schoolChange()">
+            <option value="">선택하시오</option>
+            <option value="skku">성균관대학교</option>
+            <option value="seoul">서울대학교</option>
+            <option value="yonsei">연세대학교</option>
+            <option value="korea">고려대학교</option>
+          </select>
+        </div>
+      </div>
 
-    <!-- 이름 -->
-    <div class="form-group" id="divProductName">
-      <label for="inputId" class="col-lg-2 control-label">상품 이미지 주소 (7x4) 크기</label>
-      <div class="col-lg-10 input-group">
-        <input type="text" name="product_img" /> <!-- 여기에 미리 보기 추가-->
+      <!-- 이름 -->
+      <div class="form-group" id="divProductName">
+        <label for="inputId" class="col-lg-2 control-label">상품 이미지 주소 (7x4) 크기</label>
+        <div class="col-lg-10 input-group">
+          <input type="text" class="form-control" name="product_img" /> <!-- 여기에 미리 보기 추가-->
+        </div>
       </div>
-    </div>
-    <!-- 상품 이미지, 미리보기 백엔드로 추가 가능?  -->
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">시작 가격</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="product_price" id="product_price" placeholder="가격">원
+      <!-- 상품 이미지, 미리보기 백엔드로 추가 가능?  -->
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">시작 가격</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="product_price" id="product_price" placeholder="가격">원
+        </div>
       </div>
-    </div>
-    <!-- 할인 없는 가격  -->
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격 1</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount1" id="discount1" placeholder="할인가격">원
+      <!-- 할인 없는 가격  -->
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격 1</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount1" id="discount1" placeholder="할인가격">원
+        </div>
       </div>
-    </div>
 
 
-    <!-- 할인율 및 할인에 필요한 개수  -->
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격 1 목표 개수</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount_num1" id="discount_num1" placeholder="개수">개
+      <!-- 할인율 및 할인에 필요한 개수  -->
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격 1 목표 개수</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount_num1" id="discount_num1" placeholder="개수">개
+        </div>
       </div>
-    </div>
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격2</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount2" id="discount2" placeholder="할인가격">원
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격2</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount2" id="discount2" placeholder="할인가격">원
+        </div>
       </div>
-    </div>
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격2 목표 개수</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount_num2" id="discount_num2" placeholder="개수">개
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격2 목표 개수</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount_num2" id="discount_num2" placeholder="개수">개
+        </div>
       </div>
-    </div>
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격3</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount3" id="discount3" placeholder="할인가격">원
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격3</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount3" id="discount3" placeholder="할인가격">원
+        </div>
       </div>
-    </div>
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">할인가격3 목표 개수</label>
-      <div class="col-lg-10 input-group">
-        <input type="number" class="form-control" min="0" name="discount_num3" id="discount_num3" placeholder="개수">개
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">할인가격3 목표 개수</label>
+        <div class="col-lg-10 input-group">
+          <input type="number" class="form-control" min="0" name="discount_num3" id="discount_num3" placeholder="개수">개
+        </div>
       </div>
-    </div>
-    종료날짜/시간 입력해주세요 <br>
-    <input type="date" name="date" id="date"> <br>
-    <input type="time" name="time" id="time"> <br>
-    <div class="form-group" id="divPrice">
-      <label for="inputId" class="col-lg-2 control-label">상품 상세 설명</label>
-      <div class="col-lg-10 input-group">
-        <textarea name="description" rows="10" cols="50" id="description" placeholder="상세 설명"></textarea>
+       <br>
+      <div class="form-group" id="divDate">
+        <label for="inputDate" class="col-lg-2 control-label">종료날짜/시간</label>
+        <div class="col-lg-10 input-group">
+          <input type="date" class="form-control" name="date" id="date">
+          <input type="time" class="form-control" name="time" id="time">
+        </div>
       </div>
-    </div>
 
-    <center>
-      <button type="submit" class="btn btn-primary">등록</button>
-      <button type="button" class="btn btn-primary" onclick="self.close();">취소</button>
-    </center>
-  </form>
+      <div class="form-group" id="divPrice">
+        <label for="inputId" class="col-lg-2 control-label">상품 상세 설명</label>
+        <div class="col-lg-10 input-group">
+          <textarea name="description" class="form-control" rows="10" cols="50" id="description" placeholder="상세 설명"></textarea>
+        </div>
+      </div>
+
+      <center>
+        <button type="submit" class="btn btn-primary">등록</button>
+        <button type="button" class="btn btn-primary" onclick="self.close();">취소</button>
+      </center>
+    </form>
   </div>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
