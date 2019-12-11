@@ -16,10 +16,10 @@ or 상품 전부 팔린 거 불러오기
  4) item의 i_status 0으로 전부 변경
 */
 
-var j = schedule.scheduleJob('0-59/5 * * * * *', async function() { //매 1분마다 수행
+var j = schedule.scheduleJob('0-59/10 * * * * *', async function() { //매 10초마다 수행
   var now = moment();
   var nowDate = now.format('YYYY-MM-DD HH:mm:ss'); //timestamp 형식으로 변경
-
+  console.log("update!!");
 // itemid 같음, cid 같음, item 판매 상태 중인 것 들 중 유효기간 지난것이나 다팔린 것 가져오기
   connection.query('select * from Consumer c, History h, Item i, Seller s where s.SID = i.ISID and i.ItemID = h.HItemID and c.CID = h.HCID and i.i_status = ? and (i.EndDate <= ? or i.is_Available = ?)', [1,nowDate,0], function(err, rows) {
     var itemid = new Array(); //상품 고유 id

@@ -34,6 +34,11 @@
 		}
 	</style>
 	<script type="text/javascript">
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+
 		function popupOpen() {
 			var popUrl = "../../login/register_seller"; //팝업창에 출력될 페이지 URL
 			var popOption = "width=400px, height=800px, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
@@ -41,20 +46,29 @@
 		}
 	</script>
 </head>
-
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<%
     if(pass == 1)
     { %>
-      <script type="text/javascript">    <!-- 아이디 미존재 -->
-        alert('아이디가 존재하지 않습니다.');
-      </script>
-    <%
+	<script type="text/javascript">
+		<!-- 아이디 미존재
+		-->
+		alert('아이디가
+		존재하지
+		않습니다.
+		');
+	</script>
+	<%
   }else if(pass == 2){%>
-    <script type="text/javascript">    <!-- 비밀번호 불일치 -->
-      alert('비밀번호가 존재하지 않습니다.');
-    </script>
-    <%
+	<script type="text/javascript">
+		<!-- 비밀번호 불일치
+		-->
+		alert('비밀번호가
+		존재하지
+		않습니다.
+		');
+	</script>
+	<%
   }%>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">

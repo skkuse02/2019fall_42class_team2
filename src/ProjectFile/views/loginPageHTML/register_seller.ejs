@@ -41,23 +41,19 @@
   </script>
 
 </head>
-
 <body>
   <%
     if(pass == 1)
     { %>
   <script type="text/javascript">
-    <!-- 비밀번호 불일치 -->
     alert('비밀번호가 일치하지 않습니다.');
   </script> <% }else if(pass == 2){%>
   <script type="text/javascript">
-    <!-- 회원가입 완료시 -->
     alert('회원가입이 완료되었습니다. ');
     self.close();
   </script>
   <% }else if(pass == 3){%>
   <script type="text/javascript">
-    <!-- 중복된 아이디 존재할 시-->
     alert('이미 존재하는 아이디입니다.');
   </script>
   <%}%>

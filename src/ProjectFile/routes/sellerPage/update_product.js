@@ -7,36 +7,22 @@ var connection = mysql.createConnection(dbconfig);
 
 
 /* 시작 화면 */
-<<<<<<< HEAD
-router.post('/', function(req, res, next) {
-  var name = req.body.data;
+router.post('/', function(req, res) {
+  var body = req.body;
+  var name = body.
+  console.log(body);
   res.render('sellerPageHTML/update_product');
 });
 
-router.post('/', function(req, res){
-  var name = req.body.data;
-  var sid = req.cookies.SID
-  console.log("test"+name);
-  connection.query('SELECT * From Item WHERE ISID=? and i_name=?',[sid, name], function(err, row){
-    if(err) throw err;
 
-    var description = row[0]['description'];
-    var img_src = row[0]['img_src'];
-    var name = row[0]['i_name'];
-    res.render('sellerPageHTML/update_Seller',{
-      name: name,
-      description: description,
-      img_src: img_src
-    });
-  });
+router.post('/delete', function(req, res){
+  var body = req.body;
+  var items = body.check;
+
+  for(var i = 0; i<items.length; i++){
+    connection.query("update History h, Item i set h.h_status = ? where i.ItemID = ? and i.is_Available = i.cur_total"[0, items[i]]);
+    connection.query("update Item set i_status = ? where ItemID = ? and is_Available = cur_total",[0, items[i]]);
+  }
 });
 
-
-=======
-router.get('/', function(req, res, next) {
-
-  res.render('start');
-});
-
->>>>>>> origin
 module.exports = router;
