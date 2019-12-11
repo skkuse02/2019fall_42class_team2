@@ -26,8 +26,12 @@
 
 
 ### How to run?
+```
+1. "src/ProjectFile/config" 디렉토리의 "database.js" 파일에 DB 접속정보 입력
 
-1. src/ProjectFile/config 디렉토리의 database.js 파일에 DB 접속정보 입력
-2. src/ProjectFile 디렉토리로 이동
-3. npm install.
-4. npm start
+2. shell상에서 "src/ProjectFile" 디렉토리로 이동
+
+3. "npm install" 명령어로 필요한 모듈 설치
+
+4. "npm start"
+```
