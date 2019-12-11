@@ -4,7 +4,6 @@ var router = express.Router();
 var mysql = require("mysql");
 var dbconfig = require('../../config/database.js');
 var connection = mysql.createConnection(dbconfig);
-var moment = require('moment');
 //보안 모듈
 const crypto = require('crypto');
 
@@ -54,10 +53,6 @@ router.post('/sellerlogin', function(req,res){
         var disc_num2 = new Array();
         var disc_num3 = new Array();
         var cur_sale = new Array();
-        var EndDate = new Array();
-        var newDate = moment();
-        var is_avail = new Array();
-        var sale_flag = new Array();
         //판매하고 있는 물건이 없는 경우 오류 발생했었음.
         /*
         if(row.length>0)
@@ -69,14 +64,8 @@ router.post('/sellerlogin', function(req,res){
         */
         for(var i = 0; i < row.length; i++)
         {
-          EndDate = moment(row[i]['EndDate'], 'YYYY-MM-DD HH:mm');
-          var diffTime = {
-            day: moment.duration(EndDate.diff(newDate)).days(),
-            hour: moment.duration(EndDate.diff(newDate)).hours(),
-            minute: moment.duration(EndDate.diff(newDate)).minutes()
-          };
-          period[i] = diffTime.day + '일 ' + diffTime.hour + '시간 ' + diffTime.minute + '분' //res 5, 남은 날짜 출력
           item_name[i] = row[i]['i_name'];
+          period[i] = row[i]['Period'];
           price[i] = row[i]['cur_price'];
           item_number[i] = row[i]['cur_total'];
           sale1[i] = row[i]['Discount1'];
@@ -84,19 +73,11 @@ router.post('/sellerlogin', function(req,res){
           max_sale[i] = row[i]['Discount3'];
           disc_num1[i] = row[i]['Disc_num1'];
           disc_num2[i] = row[i]['Disc_num2'];
-          disc_num3[i] = row[i]['Disc_num3'];
-          is_avail[i] = row[i]['is_Available'];
-          sale_flag[i] = item_number[i] - is_avail[i];
-          
-
-          if(sale_flag[i] < disc_num1[i]){
-            
-            cur_sale[i] = price[i];
-          }
-          else if((sale_flag[i] >= disc_num1[i]) && sale_flag[i] < disc_num2[i]){
+          disc_num3[i] = row[i]['Disc_num2'];
+          if(item_number[i] < disc_num1[i]){
             cur_sale[i] = sale1[i];
           }
-          else if(sale_flag[i] >= disc_num2[i] && sale_flag[i] < disc_num3[i]){
+          else if((item_number[i] >= disc_num1[i]) && item_number[i] < disc_num2[i]){
             cur_sale[i] = sale2[i];
           }
           else{
@@ -118,7 +99,6 @@ router.post('/sellerlogin', function(req,res){
             sale2: sale2,
             max_sale: max_sale,
             length: i,
-            sale_flag: sale_flag,
             seller_name: seller_name,
             seller_company: seller_company,
             seller_point: seller_point,

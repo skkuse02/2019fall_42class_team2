@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
     var c_point = rows[0]['Point']; //res 3
 
     //구매 현황 가져오기 상품명, 남은 기간, 상품 금액, 구매한 개수, 현재 할인율
-    connection.query('select * from History h, Item i where h.HCID = ? and h.HItemID = i.ItemID', [CID], function(err, rows) {
+    connection.query('select * from History h, Item i where h.HCID = ?  and i.i_status = ? and h.HItemID = i.ItemID', [CID,1], function(err, rows) {
       if (err) {
         throw err
       };
@@ -138,6 +138,94 @@ router.post('/refreshpoint', function(req, res) {
 });
 
 
-
-
 module.exports = router;
+
+
+
+
+
+
+//scheduler.js
+
+
+/*
+
+// enddate <= moment or is_available = 0일 때 query문 실행
+connection.query('select * from Item where i_status = ? and (EndDate <= ? or is_Available = ?)', [1, nowDate, 0], function(err, rows) {
+  var itemid = new Array(); //상품 고유 id
+  var nowprice = new Array(); //현재 가격
+  var is_available = new Array(); //남은 상품 개수
+  var cur_price = new Array(); //처음 가격
+  var itemdsc1 = new Array();
+  var itemdsc2 = new Array();
+  var itemdsc3 = new Array();
+  var itemdscnum1 = new Array();
+  var itemdscnum2 = new Array();
+  var itemdscnum3 = new Array();
+
+  for (var i = 0; i < rows.length; i++) {
+    itemid[i] = rows[i]['ItemID'];
+    is_available[i] = rows[i]['is_Available']; //할인율 정보 가져오기
+    cur_price[i] = rows[i]['cur_price'];
+    itemdsc1[i] = rows[i]['Discount1'];
+    itemdsc2[i] = rows[i]['Discount2'];
+    itemdsc3[i] = rows[i]['Discount3'];
+    itemdscnum1[i] = rows[i]['Disc_num1'];
+    itemdscnum2[i] = rows[i]['Disc_num2'];
+    itemdscnum3[i] = rows[i]['Disc_num3'];
+    //
+    if (is_available[i] > itemdscnum1[i]) //cur_price(본래 가격)으로 판매
+    {
+      nowprice[i] = cur_price[i];
+    } else if (is_available[i] > itemdscnum2[i]) //discount1로 판매
+    {
+      nowprice[i] = itemdsc1[i];
+    } else if (is_available[i] > itemdscnum3[i]) //discount2로 판매
+    {
+      nowprice[i] = itemdsc2[i];
+    } else { //discount3로 판매
+      nowprice[i] = itemdsc3[i];
+    }
+  }
+});
+
+// 4) item의 i_status 0으로 전부 변경
+connection.query('update Item set i_status = ? where EndDate <= ? or is_Available = ?', [1, nowDate, 0], function(err, rows5) {
+  if (err) {
+    throw err
+  };
+});
+
+
+// 1) History에서 HitemID = ItemID 인 것들 찾아서 조회 (select)
+//2) Consumer한테 포인트 재지급.   (consumer 포인트 += 현재 가격 * purchase_num)
+connection.query('select * from History h, Consumer c where h.HItemID = ? and h.HCID = c.CID', [itemid], function(err, rows2) {
+  console.log("22222");
+  console.log(rows2);
+  var purchase_num; //구매 개수
+  var hcid; //consumer id
+  var pid; //history의 고유 id
+  for (var j = 0; j < rows2.length; j++) {
+    purchase_num = rows2[j]['Purchase_num'];
+    hcid = rows2[j]['CID'];
+    pid = rows2[j]['PID'];
+    // Consumer 포인트 업데이트
+    connection.query('update Consumer set Point = Point + ? where CID = ?', [parseInt(nowprice) * parseInt(purchase_num), hcid], function(err, rows) {
+      console.log("33333");
+      console.log(rows);
+      if (err) {
+        throw err
+      };
+    });
+    // 3) h_status 0으로 전부 변경
+    console.log(itemid);
+    connection.query('update History set h_status = ? where HItemID = ? and HCID = ?', [0, itemid, pid], function(err, rows) {
+      console.log("44444");
+      console.log(rows);
+      if (err) {
+        throw err
+      };
+    });
+  }
+});
+*/

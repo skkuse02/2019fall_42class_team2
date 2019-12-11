@@ -7,49 +7,165 @@
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/shop-homepage.css" rel="stylesheet">
   <style>
+    body {
+      background-image: url('/img/Gray-Background.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .nav-item .nav-link {
+      background-color: transparent;
+      border: 0px transparent solid;
+    }
+
+    .main-feature {
+      border: 3px outset;
+      background-color: #333333;
+      margin-bottom: 30px;
+    }
+
+    .title {
+      color: white;
+      background-color: #555555;
+      font-weight: bold;
+    }
+
+    table {
+      background-color: white;
+
+    }
+
     .navbar-brand img {
       border: 5px solid gray;
       width: 100px;
     }
+
     .btn {
       margin: 10px;
     }
-    .bottom_gap{
-      margin-bottom:50px;
+
+    .bottom_gap {
+      margin-bottom: 50px;
     }
+
     .img_description {
       margin: 10px;
-      padding: 10px;
-      border: 1px solid;
     }
-    table th{
-      width: 50%;
-    }
-  </style>
 
+    .black {
+      font-weight: bold;
+      color: white;
+      background-color: #444444;
+      width: 40%;
+    }
+
+  </style>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script>
+    // buynum function
+    //클릭이나 엔터로 쿼리 수행
+
+    $(function() {
+      $('#buynum').click(function() {
+        var pval = $("#buynum").val(); //상품 구매 할 개수
+        var itemid = $("#ItemID").val(); //상품 고유 id
+        var nowpoint = $("#nowpoint").val(); //상품 원래 포인트
+        $.ajax({
+          url: '/customer/buy/buynum',
+          type: 'POST',
+          data: {
+            pval: pval, //구매할 개수 전송
+            itemid: itemid, // 상품의 고유 id 전송
+            nowpoint: nowpoint // 상품 원래 point
+          },
+          dataType: 'json',
+          success: function(result) {
+            if (result['ohno'] == 0) {
+              alert("상품의 재고가 없습니다!!!");
+              $('#buynum').html(result['pval']); //0
+            } else if (result['ohno'] == 1) {} else { //돈 부족
+              alert("포인트가 부족합니다.");
+              $('#buynum').val(result['pval']);
+            }
+            $('#afterpoint').html(result['afterpoint']);
+            $('#payback').html(result['payback']);
+            $('#buy_buynum').val(result['pval']);
+            $('#afterpoint2').val(result['afterpoint']);
+          }
+        });
+      });
+    });
+
+    $(function() {
+      $('#buynum').keydown(function() {
+        var pval = $("#buynum").val(); //상품 구매 할 개수
+        var itemid = $("#ItemID").val(); //상품 고유 id
+        var nowpoint = $("#nowpoint").val(); //상품 원래 포인트
+        if (pval > 50) {
+          alert("상품은 50개 이상 구매하실 수 없습니다!");
+          $('#buynum').val(0);
+          $('#afterpoint').html("-");
+          $('#payback').html("-");
+        } else {
+          $.ajax({
+            url: '/customer/buy/buynum',
+            type: 'POST',
+            data: {
+              pval: pval, //구매할 개수 전송
+              itemid: itemid, // 상품의 고유 id 전송
+              nowpoint: nowpoint // 상품 원래 point
+            },
+            dataType: 'json',
+            success: function(result) {
+              if (result['ohno'] == 0) { //재고 없음
+                alert("상품의 재고가 없습니다!!!");
+                $('#buynum').val(result['pval']); //0
+
+              } else if (result['ohno'] == 1) {} else { //돈 부족
+                alert("포인트가 부족합니다.");
+                $('#buynum').val(result['pval']);
+              }
+              $('#afterpoint').html(result['afterpoint']);
+              $('#payback').html(result['payback']);
+              $('#buy_buynum').val(result['pval']);
+              $('#afterpoint2').val(result['afterpoint']);
+            }
+          });
+        }
+      });
+    });
+  </script>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand"> <a href="mainPage.html"><img src="/img/logofile.png" alt=""></a> </div>
+      <div class="navbar-brand"><img src="/img/logofile.png" onclick="location.href='/customer/mainPage/'" alt=""></div>
       <!-- 학교 이름 삽입 -->
-      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <div class="univ_name" style="color: white"><%= Univname %></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-
           <li class="nav-item">
-            <a class="nav-link" href="mainPage.html">Home</a>
+            <!-- 구매자 초기 화면으로 -->
+            <form action="/customer/mainPage/" method="get">
+              <input class="nav-link" type="submit" value="Home">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="consumer_page.html">My Page</a>
-
+            <!-- 마이 페이지 -->
+            <form action="/customer/consumer_page/" method="post">
+              <input class="nav-link" type="submit" value="My Page">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+            <!-- 로그 아웃 -->
+            <form action="/customer/logout/logout" method="post">
+              <input class="nav-link" type="submit" value="Log out">
+            </form>
           </li>
         </ul>
       </div>
@@ -58,16 +174,16 @@
 
 
   <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
+    <div class="container dark-grey-text mt-5 main-feature">
       <!--Grid row-->
-      <h1>공동 구매</h1>
+      <h1 class="navbar title">공동 구매</h1>
       <div class="row wow fadeIn">
         <!--Grid column-->
 
         <div class="col-md-6 mb-4">
           <div class="img_description">
             <center>
-              <img src="/img/chicken1.jpg" class="img-fluid" alt="">
+              <img src="<%= imgsrc %>" class="img-fluid" alt="">
             </center>
           </div>
         </div>
@@ -77,32 +193,48 @@
           <div class="p-4">
             <table class="table table-bordered">
               <tr>
-                <th>상품 이름</th>
-                <th>치킨</th>
+                <th class="black">상품 이름</th>
+                <th><%= itemname %></th>
               </tr>
               <tr>
-                <th>구매 개수</th>
-                <th> <input type="number" max="10" min="0" name="product_num" value="product_num"> </th>
+                <th class="black">구매 개수</th>
+                <th>
+                  <input hidden="hidden" />
+                  <input type="number" max="50" min="1" value="1" id="buynum" name="product_num" value="<%= productnum %>">
+                </th>
               </tr>
               <tr>
-                <th>가격</th>
-                <th>120000</th>
+                <th class="black">가격</th>
+                <th>
+                  <% if(curprice == nowprice){ %>
+                  <%= nowprice %>
+                  <% }else{ %>
+                  <div style="font-weight: normal; text-decoration: line-through;"><%= curprice %>￦</div> <%=nowprice%>
+                  <% } %> ￦
+                </th>
               </tr>
               <tr>
-                <th>현재 포인트</th>
-                <th>150000</th>
+                <th class="black">현재 포인트</th>
+                <th>
+                  <!-- 이 부분도 수정 부탁 -->
+                  <input type="text" style="border:none; width:70px;" id="nowpoint" name="nowpoint" value="<%= nowpoint %>" readonly> ￦
+                </th>
               </tr>
               <tr>
-                <th>결제 후 포인트</th>
-                <th>150000-120000</th>
+                <th class="black">결제 후 포인트</th>
+                <th>
+                  <div style="display: inline-block;"id="afterpoint"><%= afterpoint %> </div> ￦
+                </th>
               </tr>
               <tr>
-                <th>현재 할인율</th>
-                <th>6%</th>
+                <th class="black">현재 할인율</th>
+                <th><%= discount %>%</th>
               </tr>
               <tr>
-                <th>구매 확정 후 돌려받을 가격</th>
-                <th>7200</th>
+                <th class="black">구매 확정 후 돌려받을 (예정) 가격</th>
+                <th>
+                  <div style="display: inline-block;" id="payback"><%= payback %></div> ￦
+                </th>
               </tr>
             </table>
           </div>
@@ -111,8 +243,16 @@
         <!--Grid column-->
       </div>
       <center class="bottom_gap">
-        <button type="button" class="btn btn-primary" onclick="location.href='mainPage.html'">구매 확정</button>
-        <button type="button" class="btn btn-primary" onclick="location.href='product.html'">이전 창</button>
+        <form class="" style="display: inline-block" action="/customer/buy/buy" method="post">
+          <button type="submit" class="btn btn-secondary btn-lg">구매 확정</button>
+          <input type="hidden" id="ItemID" name="ItemID" value="<%= itemid %>"> <!-- 상품의 itemid -->
+          <input type="hidden" id="buy_buynum" name="buy_buynum" value="0"> <!-- 상품 구매 개수 -->
+          <input type="hidden" id="afterpoint2" name="afterpoint2" value="<%=nowpoint%>"> <!-- 구매한 뒤 포인트 -->
+        </form>
+        <form class="" style="display: inline-block" action="/customer/product/" method="post">
+          <button type="submit" class="btn btn-secondary btn-lg">이전 창</button>
+          <input type="hidden" id="ItemID" name="ItemID" value="<%= itemid %>"> <!-- 상품의 itemid -->
+        </form>
       </center>
       <!--Grid row-->
     </div>

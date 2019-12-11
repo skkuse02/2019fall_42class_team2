@@ -14,13 +14,35 @@
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/shop-homepage.css" rel="stylesheet">
   <style>
+    body {
+      background-image: url('/img/Gray-Background.png');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .nav-item .nav-link {
+      background-color: transparent;
+      border: 0px transparent solid;
+    }
+
+    .main-feature {
+      background-color: white;
+    }
+
+    .title {
+      color: white;
+      background-color: #555555;
+      font-weight: bold;
+    }
+
     .bulletin {
       margin-top: 30px;
       width: 100%;
     }
 
     .row {
-      margin: 30px;
+      margin-top: 30px;
     }
 
     .search {
@@ -79,6 +101,10 @@
       border: 5px solid gray;
       width: 100px;
     }
+
+    .list-group{
+      margin-top: 30px;
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript">
@@ -98,14 +124,14 @@
     }
   </script>
 
-  <script>  //refresh point
+  <script>
+    //refresh point
     $(function() {
       $('#refreshpoint').click(function() {
         $.ajax({
           url: '/customer/consumer_page/refreshpoint',
           type: 'POST',
-          data: {
-          },
+          data: {},
           dataType: 'json',
           success: function(result) {
             $('#point').html(result['c_point']);
@@ -154,9 +180,8 @@
 
   <!-- Page Content -->
   <div class="container">
-    <div class="row">
+    <div class="row main-feature">
       <div class="col-lg-3">
-        <h1 class="my-4">대공구</h1>
         <div class="list-group">
           <button class="list-group-item btn1">개인 정보</button>
           <a href="javascript:popupOpen();" class="list-group-item btn2">포인트 충전</a>
@@ -164,7 +189,7 @@
       </div>
       <!-- /.col-lg-3 -->
 
-      <div class="col-lg-9" width=100%>
+      <div class="col-lg-9">
         <h4>개인 정보</h4>
         <table class="table my_info">
           <tr>
@@ -176,8 +201,10 @@
             <td><%=univname%></td>
           </tr>
           <tr>
-            <td>포인트  <button type="button" id="refreshpoint">새로고침</button>   </td>
-            <td><div id="point"><%= c_point %></div></td>
+            <td>포인트 <button type="button" id="refreshpoint">새로고침</button> </td>
+            <td>
+              <div id="point"><%= c_point %></div>
+            </td>
           </tr>
         </table>
         <div class="bulletin">
@@ -203,19 +230,6 @@
 
             </tbody>
           </table>
-          <div class="row">
-            <div class="col">
-              <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
       <!-- /.col-lg-9 -->
@@ -239,11 +253,3 @@
 </body>
 
 </html>
-
-
-
-
-<form class="" action="index.html" method="post">
-  <input type="submit" name="" value="">
-  <input type="submit" name="" value="">
-</form>

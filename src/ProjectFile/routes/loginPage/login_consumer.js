@@ -70,14 +70,13 @@ router.post('/consumerlogin', function(req, res, next) {
           univname = '고려대학교';
           break;
       }
-
-      console.log(univname);
       //학교 ID에 맞는 최대 6개의 Item 목록 랜덤하게 뽑아오기
-      connection.query('select * from Item where Univ_ID = ? order by rand() limit 6', [UnivID], function(err, row) {
+      connection.query('select * from Item where Univ_ID = ? and i_status = ? order by rand() limit 6', [UnivID,1], function(err, row) {
         var itemurl = new Array(); //res 2, 상품url
         var itemname = new Array(); //res 3, 상품이름
         var itemprice = new Array(); //res 4, 상품할인된가격
         var description = new Array(); //res 5, 상품설명
+        var itemid = new Array(); //res 6, 상품 고유 id
         var is_available; //상품 잔여 개수
 
         for (var i = 0; i < row.length; i++) {
@@ -85,6 +84,7 @@ router.post('/consumerlogin', function(req, res, next) {
           itemname[i] = row[i]['i_name'];
           description[i] = row[i]['description'];
           is_available = row[i]['is_Available'];
+          itemid[i] = row[i]['ItemID'];
           if (is_available > row[i]['Disc_num1']) //가격 그대로
           {
             itemprice[i] = row[i]['cur_price'];
@@ -105,7 +105,9 @@ router.post('/consumerlogin', function(req, res, next) {
           Itemname: itemname,
           Itemprice: itemprice,
           Description: description,
-          Length: i
+          itemid: itemid,
+          Length: i,
+          pass: 0
         });
 
       });

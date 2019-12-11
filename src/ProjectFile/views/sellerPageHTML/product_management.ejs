@@ -2,8 +2,6 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-
   <meta charset="utf-8">
   <title></title>
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,6 +17,7 @@
       margin-left: 30px;
     }
   </style>
+<<<<<<< HEAD
   <script>
 
     $(function(){
@@ -44,14 +43,24 @@
     });
   </script>
 
+=======
+>>>>>>> origin
   <script type="text/javascript">
     function registerOpen() {
       var popUrl = "../../seller/register_product"; //팝업창에 출력될 페이지 URL
       var popOption = "width=400px, height=600px, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-      var frmData = document.frmData;
       window.open(popUrl, "", popOption);
     }
+<<<<<<< HEAD
   
+=======
+    function updateOpen() {
+      var popUrl = "update_product.html"; //팝업창에 출력될 페이지 URL
+      var popOption = "width=400px, height=600px, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
+      window.open(popUrl, "", popOption);
+    }
+
+>>>>>>> origin
   </script>
 </head>
 
@@ -65,7 +74,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-              <a href="javascript:history.back()" class="nav-link">Mypage</a>
+            <a class="nav-link" href="seller_page.html">My Page</a>
           </li>
           <!-- 변경된 부분 -->
           <li class="nav-item">
@@ -85,11 +94,11 @@
           <th>상품 이미지</th>
           <th>대상 대학교</th>
           <th>이름</th>
-          <th>시작 가격</th>
-          <th>참여 개수</th>
+          <th>현재 가격</th>
+          <th>현재 개수</th>
           <th>현재 할인 가격</th>
           <th>최대 할인 가격</th>
-          <th>남은 시간</th>
+          <th>남은 기간</th>
           <th>수정/삭제
           <th>
         </tr>
@@ -100,13 +109,17 @@
             <td><img src="<%=img_src[i]%>" width="150px"></td>
             <td><%=univ[i]%></td>
             <td><%=item_name[i] %></td>
-            <td><%=price[i]%>원</td>
-            <td><%=sale_flag[i] %>개</td>
-            <td><%=cur_sale[i] %>원</td>
-            <td><%=max_sale[i] %>원</td>
+            <td><%=price[i] %></td>
+            <td><%=item_number[i] %></td>
+            <td><%=sale1[i] %></td>
+            <td><%=max_sale[i] %></td>
             <td><%=period[i] %></td>
             <td>
+<<<<<<< HEAD
                 <button type="submit" name="button" id="modi" class="btn btn-primary">수정</button>
+=======
+                <button type="button" class="btn btn-primary" name="button" onclick="javascript:updateOpen();">수정</button>
+>>>>>>> origin
                 <button type="button" class="btn btn-primary" name="button">삭제</button>
             </td>
           </tr>
@@ -114,10 +127,8 @@
       </tbody>
     </table>
     <center>
-      
-      
       <button type="button" class="btn btn-primary" onclick="javascript:registerOpen();">등록</button>
-      <button type="button" class="btn btn-primary" onclick="javascript:history.back()">돌아가기</button>
+      <button type="button" class="btn btn-primary" onclick="location.href='/seller/seller_page/product_management/register_product'">취소</button>
     </center>
   </div>
 </body>

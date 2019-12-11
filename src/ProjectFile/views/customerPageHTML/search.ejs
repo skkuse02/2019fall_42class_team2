@@ -11,12 +11,17 @@
       width: 100%;
     }
 
+    .title {
+      color: white;
+      background-color: #555555;
+      font-weight: bold;
+    }
+
     .search {
       border: 1px solid gray;
       height: 40px;
       width: 400px;
       padding: 5px;
-      margin: 10px;
       background-color: #ffffff;
     }
 
@@ -45,9 +50,25 @@
     }
 
     .navbar-search {
-      margin: 50px;
+      margin-top: 50px;
     }
   </style>
+  <!--jquery 사용-->
+  <script src='http://code.jquery.com/jquery-latest.js'></script>
+  <!-- 정렬해주는 기능 -->
+  <script type="text/javascript">
+    function sortorder() {
+      var target = document.getElementById("Sort");
+      var value = target.options[document.getElementById("Sort").selectedIndex].value;
+      if (value == "date") { //최신순 정렬
+        alert("123");
+      } else if (value == "low") { //낮은가격순 정렬
+        alert("1243");
+      } else if (value == "high") { //높은가격순 정렬
+        alert("1235");
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -55,17 +76,29 @@
     <div class="container">
       <div class="navbar-brand"><img src="/img/logofile.png" onclick="location.href='/customer/mainPage/'" alt=""></div>
       <!-- 학교 이름 삽입 -->
-      <div class="univ_name" style="color: white"> 성균관대학교 </div>
+      <div class="univ_name" style="color: white"><%= univname %></div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="seller_page.html">My Page</a>
+            <!-- 구매자 초기 화면으로 -->
+            <form action="/customer/mainPage/" method="get">
+              <input class="nav-link" type="submit" value="Home">
+            </form>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../loginPageHTML/start.html">Log out</a>
+            <!-- 마이 페이지 -->
+            <form action="/customer/consumer_page/" method="post">
+              <input class="nav-link" type="submit" value="My Page">
+            </form>
+          </li>
+          <li class="nav-item">
+            <!-- 로그 아웃 -->
+            <form action="/customer/logout/logout" method="post">
+              <input class="nav-link" type="submit" value="Log out">
+            </form>
           </li>
         </ul>
       </div>
@@ -73,66 +106,72 @@
   </nav>
 
   <div class="container">
-    <div class="navbar-search">
-      <h4>검색</h4>
-      <center>
-        <!-- 추가 검색 -->
-        <form class="" action="/customer/search/plussearch" method="post">
-          <div class="input-group md-form form-sm form-2 pl-0">
-            <input class="form-control my-0 py-1 red-border" type="text" placeholder="검색" name="search" aria-label="Search" value="<%= vocab %>">
-            <div class="input-group-append">
-              <button type="submit" name="button" class="btn btn-secondary">
-                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
-                  <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-      </center>
-    </div>
-    <hr>
-    <div class="bulletin">
-      <h4>상품 판매 목록</h4>
-      <!--검색 결과가 없을 경우-->
-      <%
+    <div class="row main-feature">
+      <div class="col-lg-12">
+        <div class="navbar-search">
+          <h4 class="navbar title">검색</h4>
+          <center>
+            <!-- 추가 검색 -->
+            <form class="" action="/customer/search/plussearch" method="post">
+              <div class="input-group md-form form-sm form-2 pl-0">
+                <input class="form-control my-0 py-1 red-border" type="text" placeholder="검색" name="search" aria-label="Search" value="<%= vocab %>">
+                <div class="input-group-append">
+                  <button type="submit" name="button" class="btn btn-secondary">
+                    <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M12.442 12.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
+                      <path fill-rule="evenodd" d="M8.5 14a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM15 8.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </center>
+        </div>
+        <hr>
+        <div class="bulletin">
+          <h4 class="navbar title">상품 판매 목록</h4>
+
+          <!--검색 결과가 없을 경우-->
+          <%
         if(Length == 0)
         { %>
-      검색 결과가 없습니다.
-      <%
+          검색 결과가 없습니다.
+          <%
         }else{
       %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>상품 이미지</th>
-            <th>이름</th>
-            <th>현재 가격</th>
-            <th>잔여 수량</th>
-            <th>현재 할인율</th>
-            <th>최대 할인율</th>
-            <th>남은 기간</th>
-          </tr>
-        </thead>
-        <!-- 상품 정보 -->
-        <tbody>
-          <% for(var i=0; i<Length; i++){ %>
-          <tr>
-            <form class="" action="/customer/search/" method="post">
-              <td><img src="<%= itemurl %>" width=150px alt=""></td>
-              <td><%= itemname %></td>
-              <td><%= itemprice %></td>
-              <td><%= is_available %> 개</td>
-              <td><%= nowdisc %> %</td>
-              <td><%= maxdisc %> %</td>
-              <td><%= itemdate %></td>
-            </form>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
-      <%}%>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>상품 이미지</th>
+                <th>이름</th>
+                <th>현재 가격</th>
+                <th>잔여 수량</th>
+                <th>현재 할인율</th>
+                <th>최대 할인율</th>
+                <th>남은 기간</th>
+              </tr>
+            </thead>
+            <!-- 상품 정보 -->
+            <tbody>
+              <% for(var i=0; i<Length; i++){ %>
+              <tr>
+                <form class="" action="/customer/product/" method="post">
+                  <td><input type="image" src="<%= itemurl[i] %>" name="Submit" width=150px></td>
+                  <input type="hidden" name="ItemID" value="<%= itemid[i] %>"> <!-- 상품의 itemid -->
+                </form>
+                <td><%= itemname[i] %></td>
+                <td><%= itemprice[i] %></td>
+                <td><%= is_available[i] %> 개</td>
+                <td><%= nowdisc[i] %> %</td>
+                <td><%= maxdisc[i] %> %</td>
+                <td><%= itemdate[i] %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <%}%>
+        </div>
+      </div>
     </div>
   </div>
 

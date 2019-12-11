@@ -12,6 +12,32 @@ const crypto = require('crypto');
    res.render('loginPageHTML/register_consumer', {pass:'0'});
  });
 
+
+//id 중복 검사
+ router.post('/idcheck', function(req, res) {
+   var id = req.body.data;
+   connection.query('SELECT * FROM Consumer WHERE CID=?', [id], function(err, row) {
+     if (row.length != 0) {
+       var data = "존재";
+       console.log("구매자 아이디 중복");
+       return res.send({
+         data: data
+       });
+     } else if (id == "") {
+       var data = "공백";
+       return res.send({
+         data: data
+       });
+     } else {
+       var data = "가능";
+       return res.send({
+         data: data
+       });
+     }
+   });
+ });
+
+
 //구매자 회원가입
  router.post('/register',function (req,res){
  	 var body = req.body;
@@ -32,7 +58,6 @@ const crypto = require('crypto');
    }
    //아이디 중복 체크
    connection.query('SELECT * FROM Consumer WHERE CID = ?', [id], function(err, data){
-     console.log(data);
      if(data.length!=0)
      {
        console.log("아이디중복");

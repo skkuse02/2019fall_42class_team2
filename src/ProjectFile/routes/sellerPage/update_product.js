@@ -7,6 +7,7 @@ var connection = mysql.createConnection(dbconfig);
 
 
 /* 시작 화면 */
+<<<<<<< HEAD
 router.post('/', function(req, res, next) {
   var name = req.body.data;
   res.render('sellerPageHTML/update_product');
@@ -31,4 +32,11 @@ router.post('/', function(req, res){
 });
 
 
+=======
+router.get('/', function(req, res, next) {
+
+  res.render('start');
+});
+
+>>>>>>> origin
 module.exports = router;
