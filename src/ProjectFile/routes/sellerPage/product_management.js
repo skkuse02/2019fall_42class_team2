@@ -88,9 +88,34 @@ router.get('/',function (req,res){
   })
 });
 
+
+router.post('/update', function(req, res){
+  var body = req.body;
+  var sid = req.cookies.SID
+  var name = body.name;
+ 
+  connection.query('SELECT * From Item WHERE ISID=? and i_name=?',[sid, name], function(err, row){
+    if(err) throw err;
+
+    var description = row[0]['description'];
+    var img_src = row[0]['img_src'];
+    var name = row[0]['i_name'];
+    res.render('sellerPageHTML/update_Seller',{
+      name: name,
+      description: description,
+      img_src: img_src
+    });
+  });
+});
+
+
+
 /*상품 등록 */
 router.get('/register_product', function(req, res) {
   res.render('sellerPageHTML/register_product');
 });
+
+
+
 
 module.exports = router;

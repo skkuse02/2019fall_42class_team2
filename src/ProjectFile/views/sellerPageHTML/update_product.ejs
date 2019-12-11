@@ -15,21 +15,21 @@
     <div class="form-group" id="cvalue">
       <label for="inputId" class="col-lg-2 control-label">상품 이름</label>
       <div class="col-lg-10 input-group">
-        <input type="text" class="form-control" id="product_name" placeholder="상품 이름" maxlength="30">
+        <input type="text" class="form-control" id="product_name" value="<%=name%>" maxlength="30">
       </div>
     </div>
     <!-- 이름 -->
     <div class="form-group" id="cvalue">
       <label for="inputId" class="col-lg-2 control-label">상품 이미지</label>
       <div class="col-lg-10 input-group">
-        <input type="file" name="product_img" />
+        <input type="file" name="product_img" value="<%=img_src%>"/>
       </div>
     </div>
     <!-- 상품 이미지, 미리보기 백엔드로 추가 가능?  -->
     <div class="form-group" id="cvalue">
       <label for="inputId" class="col-lg-2 control-label">상품 상세 설명</label>
       <div class="col-lg-10 input-group">
-        <textarea name="message" rows="10" cols="50" placeholder="상세 설명"></textarea>
+        <textarea name="message" rows="10" cols="50" placeholder="상세 설명"><%=description%></textarea>
       </div>
     </div>
 

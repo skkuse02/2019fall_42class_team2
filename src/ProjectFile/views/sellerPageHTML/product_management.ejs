@@ -20,17 +20,17 @@
     }
   </style>
   <script>
+
     $(function(){
       $('#modi').click(function(){
         var str="";
         var tdArr = new Array();
-        var tr = $(this);
-        alert(tr);
+        var _button = $(this);
+        var tr = _button.parent().parent().parent();
         var td = tr.children();
         var name = td.eq(2).text();
-        console.log(name);
         $.ajax({
-          url: '/seller/update_product',
+          url: '../../seller/product_management/update',
           type: 'POST',
           data:{
             data: name
@@ -51,15 +51,7 @@
       var frmData = document.frmData;
       window.open(popUrl, "", popOption);
     }
-    function updateOpen() {
-      var popUrl = "../../seller/update_product"; //팝업창에 출력될 페이지 URL
-      var popOption = "width=400px, height=600px, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-      openWin = window.open(popUrl, "", popOption);
-
-      openWin.document.getElementById("cvalue") = document.getElementById("pvalue").value;
-      console.log("testestset",document.getElementById("pvalue").value);
-    }
-
+  
   </script>
 </head>
 
@@ -114,7 +106,7 @@
             <td><%=max_sale[i] %>원</td>
             <td><%=period[i] %></td>
             <td>
-                <button type="button" name="button" id="modi" class="btn btn-primary">수정</button>
+                <button type="submit" name="button" id="modi" class="btn btn-primary">수정</button>
                 <button type="button" class="btn btn-primary" name="button">삭제</button>
             </td>
           </tr>
